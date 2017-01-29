@@ -9,13 +9,13 @@ s = smu.smu()
 s.set_function(1, 0) # SV/MI
 s.set_function(2, 0) # SV/MI
 
-s.set_voltage(1, 2) # 2 Volts on channel 1
+s.set_voltage(1, 10) # 2 Volts on channel 1
 
 while True:
     s.autorange(1)
     s.autorange(2)
     tmp = -s.get_current(2)
-    print( "Current through Channel 2: " + str(tmp) )
+    print( "Current through Channel 2: %.10f" % tmp )
     sleep(0.1)
 
 

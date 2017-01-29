@@ -1,0 +1,238 @@
+\documentclass{article}
+\usepackage[utf8]{inputenc}
+\usepackage{amstext}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{graphicx}
+\usepackage[margin=1in, paperwidth=8.5in, paperheight=11in]{geometry}
+\usepackage{gensymb}
+\usepackage{indentfirst}
+\usepackage{textcomp}
+\usepackage{upgreek }
+\usepackage{siunitx}
+\usepackage{enumitem}
+
+\usepackage[american]{circuitikz}
+
+
+\title{Circuits Prelab 1}
+\author{Byron Wasti}
+\date{January 2017}
+
+\begin{document}
+
+\maketitle
+
+\section{Electrical Measurement Concepts}
+
+\begin{itemize}
+    \item [(a)] An ideal voltage meter has {\bf infinite} internal resistance and should be connecting in {\bf parallel} with the circuit or device being used.
+    \item [(b)] An ideal current meter has {\bf zero} internal resistance and should be connected in {\bf series} with the circuit or device being used.
+\end{itemize}
+
+\section{Resistive Divider Accuracy}
+
+There are a number of different cases to consider for determining how the tolerance on the divider ratio depends on the tolerance of the individual components. The naive equation to consider is the one shown in Equation \ref{eq:tolerance1}.
+
+\begin{figure}[h!]
+    \centering
+    \begin{equation}
+        Ratio = \frac{R_2 \pm \Delta R_2} {(R_1 \pm \Delta R_1) + (R_2 \pm \Delta R_2)}
+    \end{equation}
+    \caption{Naive equation for tolerance on the divider ratio.}
+    \label{eq:tolerance1}
+\end{figure}
+
+However, this equation does not make it easy to see how the tolerances affect the ratio. This equation does simplify if $\Delta R_1 = \Delta R_2$, and it simplifies to the ideal divider ratio since the tolerance offsets cancel each other out. 
+
+One other thing to consider is the relative error of the ratio from the ideal ratio. The unsimplified relative error can be seen in Equation \ref{eq:tolerance2}.
+
+\begin{figure}[h!]
+    \centering
+    \begin{equation}
+        \frac{ \frac{R_2}{R_1 + R_2}  -  \frac{R_2 + \Delta R_2} { R_1 + \Delta R_1 + R_2 + \Delta R_2 }} { \frac{R_2}{R_1 + R_2} }
+    \end{equation}
+    \caption{Unsimplified relative error for voltage divider tolerancing}
+    \label{eq:tolerance2}
+\end{figure}
+
+This equation can be simplified to what is shown in Equation \ref{eq:tolerance3}. 
+
+\begin{figure}[h!]
+    \centering
+    \begin{equation}
+        \frac{R_1 (\Delta_1 - \Delta_2)} {R_1(1 + \Delta_1) + R_2(1 + \Delta_2)}
+    \end{equation}
+    \caption{Simplified relative error for voltage divider tolerancing}
+    \label{eq:tolerance3}
+\end{figure}
+
+
+\section{R-2R Ladder Network}
+% Just explain how we collapse the network and find the different values. Don't need to prove rigorously
+
+
+The first step for finding a function for $I_i$, where $i \in \{1, 2, 3, ... , N\}$, is finding the current through the first resistor. We can do this by collapsing the resistor network into one equivalent resistance.
+
+The two resistors at the far right of the R-2R ladder network have an equivalent resistance of 2R, which are in parallel with a resistor of value 2R. The equivalent resistance of these resistors in parallel is then just R, which makes the circuit mirror what it originally looked like.
+
+Since this circuit creates a pattern, the equivalent resistance is simply 2R. Thus the current through the first resistor is $I_{in} = \frac{V}{2R}$.
+
+We can then look at the node right after the first resistor. Using the pattern described above, this circuit resembles that of Figure \ref{fig:circuit1}. KCL tells us that $I_{in} = I_1 + I_{else}$, but we also know how resistors behave when they act as current dividers. Therefore, $I_1 = \frac{2R || 2R} {2R}I_{in} = \frac{1}{2}I_{in} = \frac{V}{4R}$.
+
+\begin{figure}[h!]
+    \centering
+    \begin{circuitikz}
+        \draw (0, 2) 
+            to [V, v_=$V$] (0, 0) {};
+        
+        \draw (0, 2)
+            to [R, l^=R, i=$I_{in}$] (2, 2)
+            to [R, l^=2R, i=$I_1$] (2, 0);
+
+        \draw (2, 2)
+            to [short] (4, 2)
+            to [R, l^=2R, i=$I_{else}$] (4, 0)
+            to [short] (0, 0);
+
+
+    \end{circuitikz}
+    \caption{Equivalent circuit for finding $I_1$}
+    \label{fig:circuit1}
+\end{figure}
+
+This method can be repeated. For the second branch, everything is the same except the current into the circuit is $I_{else} = I_1 = \frac{V}{4R}$. Thus, $I_2 = \frac{V}{8R}$. In fact, using this logic, we can construct the function shown in Figure \ref{eq:equation1}.
+
+\begin{figure}[h!]
+    \centering
+    \begin{equation}
+        I_i = \frac{V}{2^{i+1}R}
+    \end{equation}
+    \label{eq:equation1}
+    \caption{Equation for finding the current at each $I_i$.}
+\end{figure}
+
+\section{Accurate 2:1 Resistor Ratios}
+% The basic version. Can also mutate the circtui in ways
+The two possible methods for creating a 2:1 ladder network are shown in Figure \ref{fig:method1} and Figure \ref{fig:method2}. The second method, shown in Figure \ref{fig:method2}, uses fewer unit resistors (1 fewer) by eliminating the need for two resistors at the end of the network.
+
+\begin{figure}[h!]
+    \centering
+    \begin{circuitikz}
+        \draw (0, 4) to [V, v_=$V$] (0, 0) {};
+        \draw (0, 4) to [R, l^=$R$] (3, 4)
+                     to [R, l^=$R$] (6, 4)
+                     to [short] (7, 4)
+                     to [open, *-*] (7.5, 4)
+                     to [open, *-*] (8, 4)
+                     to [R, l^=$R$] (11, 4)
+                     to [R, l^=$R$] (14, 4)
+                     to [R, l^=$R$] (14, 0)
+                     to [short] (11, 0);
+
+        \draw (3, 4) to [R, l^=$R$] (3, 2)
+                     to [R, l^=$R$] (3, 0)
+                     to [short] (0, 0);
+
+        \draw (6, 4) to [R, l^=$R$] (6, 2)
+                     to [R, l^=$R$] (6, 0)
+                     to [short] (3, 0);
+
+        \draw (11, 4) to [R, l^=$R$] (11, 2)
+                     to [R, l^=$R$] (11, 0)
+                     to [short] (8, 0)
+                     to [open, *-*] (7.5, 0)
+                     to [open, *-*] (7, 0)
+                     to [short] (6, 0);
+    \end{circuitikz}
+    \caption{First method for resistive ladder}
+    \label{fig:method1}
+\end{figure}
+
+\begin{figure}[h!]
+    \centering
+    \begin{circuitikz}
+
+        % Setup
+        \draw (0, 4)
+            to [V, v_=$V$] (0, 0) {};
+
+        % First parallel
+        \draw (0, 4)
+            to [short] (1, 4);
+
+        \draw (1, 4)
+            to [short] (1, 3)
+            to [R, l^=$R$] (3, 3)
+            to [short] (3, 4);
+
+        \draw (1, 4)
+            to [short] (1, 5)
+            to [R, l^=$R$] (3, 5)
+            to [short] (3, 4);
+
+        \draw (3, 4)
+            to [short] (4, 4)
+            to [R, l^=$R$] (4, 0)
+            to [short] (0, 0);
+
+        % Second parallel
+        \draw (4, 4)
+            to [short] (5, 4); % Everything is plus 4
+
+        \draw (5, 4)
+            to [short] (5, 3)
+            to [R, l^=$R$] (7, 3)
+            to [short] (7, 4);
+
+        \draw (5, 4)
+            to [short] (5, 5)
+            to [R, l^=$R$] (7, 5)
+            to [short] (7, 4);
+
+        \draw (7, 4)
+            to [short] (8, 4)
+            to [R, l^=$R$] (8, 0)
+            to [short] (4, 0);
+
+        % Third parallel
+        \draw (8, 4)
+            to [short] (9, 4)
+            to [open, *-*] (9.5, 4)
+            to [open, *-*] (10, 4)
+            to [short] (11, 4); % Everything plus 6
+
+        \draw (11, 4)
+            to [short] (11, 3)
+            to [R, l^=$R$] (13, 3)
+            to [short] (13, 4);
+
+        \draw (11, 4)
+            to [short] (11, 5)
+            to [R, l^=$R$] (13, 5)
+            to [short] (13, 4);
+
+        \draw (13, 4)
+            to [short] (14, 4)
+            to [R, l^=$R$] (14, 0)
+            to [short] (10, 0);
+
+        % Backdraw
+        \draw (10, 0)
+            to [open, *-*] (9.5, 0)
+            to [open, *-*] (9, 0)
+            to [short] (8, 0);
+
+        % End thang
+        \draw (14, 4)
+            to [short] (16, 4)
+            to [R, l^=$R$] (16, 0)
+            to [short] (14, 0);
+
+
+    \end{circuitikz}
+    \caption{Second method for the resistive ladder}
+    \label{fig:method2}
+\end{figure}
+
+\end{document}
