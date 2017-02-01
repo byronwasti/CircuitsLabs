@@ -1,0 +1,43 @@
+\documentclass{article}
+\usepackage[utf8]{inputenc}
+\usepackage{amstext}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{graphicx}
+\usepackage[margin=1in, paperwidth=8.5in, paperheight=11in]{geometry}
+\usepackage{gensymb}
+\usepackage{indentfirst}
+\usepackage{textcomp}
+\usepackage{upgreek }
+\usepackage{siunitx}
+\usepackage{enumitem}
+
+\usepackage[american]{circuitikz}
+
+\title{Circuits Postlab 1}
+\author{Byron Wasti}
+\date{February 2017}
+
+\begin{document}
+\maketitle
+
+\section{Postlab Question}
+
+For the standard R-2R Ladder Network there are two steps we need in order to find the current flowing through each of the $2R$ resistors. First, if we collapse the entire network into one equivalent resistor (to find the current flowing through the first resistor), we find that the equivalent resistance is simply $2R$.
+
+Thus, the current flowing through the first resistor is $I_{in} = \frac{V_{ref}}{2R}$. We can find the current flowing through the $N-1$ branch by collapsing the resistor network to the right of the $N-1$ branch into one equivalent resistor, which is $2R$. Thus, we have $I_{in}$ splitting into two parallel resistors both of value $2R$, which means that the current through the $N-1$ branch is $I_{N-1} = \frac{V_{ref}}{4R}$.
+
+If we use this similar train of thought for the rest of the branches, we can find a pattern. The current through each branch is simply half the current through the branch previous. We can simplify this pattern even further into a simple equation, shown below.
+
+\begin{equation}
+    I_{n} = \frac{V_{ref}}{2^{N-n+1}R}
+\end{equation}
+
+When we consider the total output current, we know from KCL that it will be the sum of all the currents through the branches where the bit is set to $1$. Thus, we can simply take the sum of the currents through all the branches multiplied by the bit value of that branch in order to get the output current. This is shown in the equation below.
+
+\begin{equation}
+    I_{out} = \sum_{n=0}^{N-1} \frac{b_nV_{ref}}{2^{N-n+1}R}
+\end{equation}
+
+
+\end{document}
