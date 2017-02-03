@@ -1,0 +1,74 @@
+\documentclass{article}
+\usepackage[utf8]{inputenc}
+\usepackage{amstext}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{graphicx}
+\usepackage[margin=1in, paperwidth=8.5in, paperheight=11in]{geometry}
+\usepackage{gensymb}
+\usepackage{indentfirst}
+\usepackage{textcomp}
+\usepackage{upgreek }
+\usepackage{siunitx}
+\usepackage{enumitem}
+
+\usepackage[american]{circuitikz}
+
+
+\title{Circuits Prelab 1}
+\author{Byron Wasti}
+\date{January 2017}
+
+\begin{document}
+
+\maketitle
+
+\section{Question 1}
+
+\begin{equation} \label{eq:diode}
+    I = I_s(e^{V/U_T} - 1)
+\end{equation}
+
+
+\begin{itemize}
+
+    \item [(a)] 
+        If we force greater than a nanoamp into the diode-connected transistor, eliminating the second term of the ideal diode equation (shown in equation \ref{eq:diode}) is a good approximation. If we take $I_s$ to be a few femptoamps, then we can rearange equation \ref{eq:diode} to be $\frac{I}{I_s} = e^{V/U_T} - 1$. If we take $I$ to be greater than a nanoamp, then the left side of the equation is large. This means that the $-1$ does not affect the equation to a massive degree, and thus can be disgarded for approximation's sake.
+
+\begin{equation} \label{eq:approxDiode}
+    I = I_s(e^{V/U_T})
+\end{equation}
+
+    \item [(b)] 
+        If we increase the current by one e-fold, then the voltage would increase by $U_T$. This is because $Ie^1 = I_s(e^{V/U_T})e^1$, which simplifies to $Ie^1 = I_s( e^{ \frac{V + U_T}{U_T}})$. If we increase the current by one decade, we get $10I = 10I_se^{V/U_T}$. Using the laws of logarithms, we can simplify this equation to $10I = I_se^{\frac{V+U_T\ln{(10)}}{U_T}}$. Thus the voltage is increased by $U_T\ln{(10)}$ when the current is increased by a decade.
+
+    \item [(c)]
+        We can start with equation \ref{eq:approxDiode} and solve for $V$. We now have $V = U_T\ln{(\frac{I}{I_s})}$. Using the taylor expansion of $\ln$, and only taking the first order term, we can simplify to $\delta V = \frac{U_T}{I_s}\ln{(\frac{I}{I_s})}\delta I$. Thus, we can find $\frac{ \delta V}{\delta I} = \frac{U_T}{I} = r_d$. 
+
+    \item [(d)]
+        I would not expect the situation to differ because the I-V characteristic is defined, and although non-linear, the tangent line approximation will stay the same regardless of whether $V$ or $I$ changes.
+        
+    \item [(e)]
+        We would take voltage measurements for small changes in current (above and below a set point), for which we could apply linear regression to approximate a tangent line and use this line to find $U_T$. By then sweeping the current and measuring voltage, we can find the exponential curve the diode follows, and since we know all the values except for $I_s$, we can extract $I_s$. 
+\end{itemize}
+
+\section{Question 2}
+
+\begin{itemize}
+    \item [(a)]
+        If we plug in the input current $I$ into the approximated ideal diode equation which is shown in equation \ref{eq:approxDiode}, we can then solve for $V$ and get $V = U_T\ln{(\frac{I}{I_s})}$. The voltage across the resistor is simply given by $V_R = IR$, and the total voltage is the sum of all voltages (by KVL) and is thus $V_{in} = V_R + V = IR +U_T\ln{(\frac{I}{I_s})}$.
+
+    \item [(b)]
+        We showed in class that $\delta V_R = \delta IR$. For $\delta V$, we know that $\delta V = \delta I R_d$ and from Q1c, we have $\delta V = \delta I \frac{U_T}{I}$. Thus, using KVL again, we have $\delta V_{in} = \delta I (R + \frac{U_T}{I})$.
+
+    \item [(c)]
+
+
+    \item [(d)]
+    \item [(e)]
+    \item [(f)]
+    \item [(g)]
+\end{itemize}
+
+\end{document}
+

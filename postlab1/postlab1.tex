@@ -30,7 +30,7 @@ Thus, the current flowing through the first resistor is $I_{in} = \frac{V_{ref}}
 If we use this similar train of thought for the rest of the branches, we can find a pattern. The current through each branch is simply half the current through the branch previous. We can simplify this pattern even further into a simple equation, shown below.
 
 \begin{equation}
-    I_{n} = \frac{V_{ref}}{2^{N-n+1}R}
+    I_{n} = \frac{V_{ref}}{2^{N-n+1}R}  \text{ for } n \in \{0, 1, 2, ..., N-1\}
 \end{equation}
 
 When we consider the total output current, we know from KCL that it will be the sum of all the currents through the branches where the bit is set to $1$. Thus, we can simply take the sum of the currents through all the branches multiplied by the bit value of that branch in order to get the output current. This is shown in the equation below.
