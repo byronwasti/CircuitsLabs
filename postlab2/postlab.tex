@@ -1,0 +1,69 @@
+\documentclass{article}
+\usepackage[utf8]{inputenc}
+\usepackage{amstext}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{graphicx}
+\usepackage[margin=1in, paperwidth=8.5in, paperheight=11in]{geometry}
+\usepackage{gensymb}
+\usepackage{indentfirst}
+\usepackage{textcomp}
+\usepackage{upgreek }
+\usepackage{siunitx}
+\usepackage{enumitem}
+
+\usepackage[american]{circuitikz}
+
+\title{Circuits Postlab 2}
+\author{Byron Wasti}
+\date{February 2017}
+
+\begin{document}
+\maketitle
+
+\section{Problem 1}
+
+\begin{itemize}
+    \item[(a)] Using KCL we know that the current through the diode-connected transistor is equal to the current through the resistor. We can thus get the equation $\frac{V_{in} - V}{R} = I_s(e^{V/U_T})$. We also know $R = \frac{U_T}{I_{on}}$, and we can plug this into our initial equation. We can then go through the steps shown below:
+        \begin{align*}
+            \frac{V_{in} - V}{U_T}I_{on} &= I_s(e^{V/U_T}\\
+            U_T\log(\frac{V_{in} - V}{U_T}) + U_T\log(\frac{I_{on}}{I_s}) &= V\\
+            \log(\frac{V_{in} - V}{U_T}) &= \frac{V - V_{on}}{U_T}\\
+            V_{in} &= U_Te^{(V-V_{on})/U_T} + V
+        \end{align*}
+
+        And thus we get the equation $V_{in} = U_Te^{(V-V_{on})/U_T} + V$.
+
+    \item[(b)] If $V < V_{on}$ by more than a few $U_T$, then $e^{(V - V_{on})/U_T}$ will tend towards being very small such that $V_{in} \approx V$. From our equation before, we know that $\frac{V_{in} - V}{R} = I$. Since $V \approx V_{in}$, this means that $I = 0$ in this regime. This matches our data from Experiment 2, because there was basically no current flowing.
+    
+    \item[(c)] If $V > V_{on}$, then $e^{(V - V_{on})/U_T} \gg V$, and thus the equation we found in part (a) can be approximated to $V_{in} = U_Te^{(V - V_{on})/U_T}$.  We can simplify and manipulate this equation to be $U_T\log(\frac{V_{in}}{U_T}) + V_{on} = V$. Since $\log(\frac{V_{in}}{U_T})$ is rather small, we can say that $V \approx V_{on}$. This means that $I = \frac{V_{in} - V_{on}}{R}$, and that it varies linearly with the voltage in. This does match the experimental data we found in Experiment 2.
+
+\end{itemize}
+
+\section{Problem 2}
+\begin{equation} \label{eq:1}
+    V = V_1 - U_T\log(1 + e^{(V_1-V_2)/U_T})
+\end{equation}
+
+\begin{itemize}
+    \item [(a)] If $V_1 < V_2$ by more than a few $U_T$, then $e^{(V_1-V_2)/U_T}$ will tend towards being extremely small, thus making $\log{(1 + e^{(V_1-V_2)/U_T})}$ tends towards just being $\log{(1)}$, which as we all know is equal to $0$. Thus, the second part of the equation shown in equation \ref{eq:1} will tend towards $0$, leaving $V = V_1$. \\
+
+        If $V_1 > V_2$, then $e^{(V_1-V_2)/U_T}$ will be much larger than $1$, allowing us to drop the $1$ from the left side of the $\log$. This simplifies to simply $V = V_1 - U_T\log(e^{(V_1-V_2)/U_T})$. If we simplify even further, we get simply $V = V_2$.
+
+    \item [(b)] We can approximate the behavior of the voltage across the diode-connected transistor, $V$, as a function of the applied input voltage, $V_{in}$, by simply letting $V_1 = V_{in}$ and $V_2 = V_{on}$. Thus, when $V_{in} > V_{on}$ the voltage across the diode-connected transistor is $V_{on}$ and when $V_{in} < V_{on}$ the voltage across the diode-connected transistor is $V_{in}$, which is the behavior we saw in the lab.
+
+    \item [(c)] From this approximate relationship between $V$ and $V_{in}$, we can find $I$ by simply using KVL and Ohm's law. Thus, $I = \frac{V_{in} - V}{R}$. When $V_{in} < V_{on}$ by more than a few $U_T$, then $V \approx V_{in}$ and this equation for $I$ simplifies to $I = 0$, which means there is no current flowing through the circuit. When $V_{in} > V_{on}$, then $V \approx V_{on}$ and $I = \frac{V_{in} - V_{on}}{R}$ which means the current is linear with respect to the resistor and the input voltage with a slight offset. Both of these asymptotic limits match the data that we obtained in Experiment 2.
+
+
+    \item [(d)] Using the current-voltage characteristic of the diode-connected transistor (which is $I = I_se^{V/U_T}$), we can obtain an explicit expression for the input current, $I$, as a function of $V_{in}$ as shown in equation \ref{eq:2} below by plugging in the alternative version of equation \ref{eq:1} into the current-voltage characteristic of the diode-connected transistor. \\
+        
+        If $V_{in} < V_{on}$, then the denominator of the rightmost equation in equation \ref{eq:2} is dominated by $e^{-V_{on}/U_T}$. Thus, we can simplify this to be $I = I_se^{V_{on}/U_T}$. This means that $I$ is basically constant regardless of $V_{in}$. This matches the data we found in Experiment 2 when $V_{in} < V_{on}$, because there was virtually no current flowing and it did not change with respect to $V_{in}$. \\
+
+        If $V_{in} > V_{on}$, then the denominator of the rightmost equation in equation \ref{eq:2} is dominated by $e^{-V_{in}/U_T}$. Thus we can simplify this to $I = I_se^{V_{in}/U_T}$. Here, we see that $I$ grows exponentially with a change in $V_{in}$. This does not match the behavior we found in Experiment 2 because we did not take into account the current-limiting resistor.
+
+        \begin{equation} \label{eq:2}
+            I = I_s\left(e^{-\log(e^{-V_{in}/U_T} + e^{-V_{on}/U_T})}\right) = I_s\left(\frac{1}{e^{-V_{in}/U_T} + e^{-V_{on}/U_T}} \right)
+        \end{equation}
+\end{itemize}
+
+\end{document}
