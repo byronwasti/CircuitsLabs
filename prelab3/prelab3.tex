@@ -25,7 +25,38 @@
 
 \section{Question 1}
 \begin{itemize}
-    \item Test
+    \item [(a)] 
+        Since we know that $I_e = I_c + I_b$, we can plug in for $I_e$, $I_c$ and $I_b$, and get $\frac{I_s}{\alpha}e^{(V_b - V_e)/U_T} = I_se^{(V_b - V_e)/U_T} + \frac{I_s}{\beta}e^{(V_b - V_e)/U_T}$. We can simplify this equation to find $\alpha$, and we get:
+        \begin{equation*}
+            \alpha = \frac{\beta}{\beta + 1}
+        \end{equation*}
+
+    \item [(b)]
+        We can find the incremental resistance of the base terminal $r_b$, which is given by $r_b = \frac{\partial V_b}{\partial I_b}$, by simply plugging in what we know for $I_b$ and following the steps shown below:
+        \begin{align*}
+            r_b &= \frac{\partial V_b}{\partial I_b}\\
+            r_b &= \left(\frac{\partial I_b}{\partial V_b}\right)^{-1}\\
+            r_b &= \left( \frac{I_s}{\beta}e^{(V_b - V_e)/U_T}\cdot \frac{1}{U_T} \right)\\
+            r_b &= \frac{U_T}{I_b}
+        \end{align*}
+
+    \item [(c)]
+        The incremental transconductance gain is given by $g_m = \frac{ \partial I_c }{ \partial V_b }$. We can plug in $I_c = I_se^{(V_b - V_e)/U_T}$ and solve to find that:
+        \begin{equation*}
+            g_m = \frac{ I_c }{ U_T }
+        \end{equation*}
+
+    \item [(d)]
+        We can find a relationship between $r_b$ and $g_m$ by first starting with $I_e = I_c + I_b$. We can then substitute in $r_b$ and $g_m$ to get $\frac{U_T}{r_e} = g_mU_T + I_b$. Since we know that $g_mU_T = I_c = \beta I_b$, we can then simplify and get $\frac{1}{r_e} = g_m (1 + \frac{1}{\beta})$. Simplifying even further, and using our relationship between $\alpha$ and $\beta$ we get the equation below.
+        \begin{equation*}
+            g_m = \frac{\alpha}{r_e}
+        \end{equation*}
+
+\end{itemize}
+
+\section{Question 2}
+\begin{itemize}
+    \item[(a)] Test
 
 \end{itemize}
 
