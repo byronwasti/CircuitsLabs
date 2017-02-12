@@ -59,7 +59,7 @@
         
         If $V_{in} < V_{on}$, then the denominator of the rightmost equation in equation \ref{eq:2} is dominated by $e^{-V_{on}/U_T}$. Thus, we can simplify this to be $I = I_se^{V_{on}/U_T}$. This means that $I$ is basically constant regardless of $V_{in}$. This matches the data we found in Experiment 2 when $V_{in} < V_{on}$, because there was virtually no current flowing and it did not change with respect to $V_{in}$. \\
 
-        If $V_{in} > V_{on}$, then the denominator of the rightmost equation in equation \ref{eq:2} is dominated by $e^{-V_{in}/U_T}$. Thus we can simplify this to $I = I_se^{V_{in}/U_T}$. Here, we see that $I$ grows exponentially with a change in $V_{in}$. This does not match the behavior we found in Experiment 2 because we did not take into account the current-limiting resistor.
+        If $V_{in} > V_{on}$, then the denominator of the rightmost equation in equation \ref{eq:2} is dominated by $e^{-V_{in}/U_T}$. Thus we can simplify this to $I = I_se^{V_{in}/U_T}$. Here, we see that $I$ grows exponentially with a change in $V_{in}$. This does not match the behavior we found in Experiment 2 because we did not take into account the current-limiting resistor which would limit this current.
 
         \begin{equation} \label{eq:2}
             I = I_s\left(e^{-\log(e^{-V_{in}/U_T} + e^{-V_{on}/U_T})}\right) = I_s\left(\frac{1}{e^{-V_{in}/U_T} + e^{-V_{on}/U_T}} \right)
