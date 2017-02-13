@@ -47,19 +47,100 @@
         \end{equation*}
 
     \item [(d)]
-        NOTE THIS IS WRONG: FIND R_b
-
-
-        We can find a relationship between $r_b$ and $g_m$ by first starting with $I_e = I_c + I_b$. We can then substitute in $r_b$ and $g_m$ to get $\frac{U_T}{r_e} = g_mU_T + I_b$. Since we know that $g_mU_T = I_c = \beta I_b$, we can then simplify and get $\frac{1}{r_e} = g_m (1 + \frac{1}{\beta})$. Simplifying even further, and using our relationship between $\alpha$ and $\beta$ we get the equation below.
+        We can find a relationship between $r_b$ and $g_m$ by first starting with $I_e = I_c + I_b$. We can then substitute in $r_b$ and $g_m$ to get $\frac{g_m}{\alpha} = g_mU_T + \frac{U_T}{r_b}$. Since we know that $g_mU_T = I_c = \alpha I_e$ and $\frac{U_T}{r_b} = I_b$. We can simplify this to get the relationship shown below:
+        
         \begin{equation*}
-            g_m = \frac{\alpha}{r_e}
+            g_m = \frac{\alpha}{r_b - \alpha}
         \end{equation*}
 
 \end{itemize}
 
 \section{Question 2}
 \begin{itemize}
-    \item[(a)] Test
+    \item[(a)] From our notes, we know that $R_b = r_b + (\beta + 1)R$. Substituting in $\frac{U_T}{I_b}$ for $r_b$ gives us $R_b = \frac{U_T}{I_b} + (\beta + 1)R$.
+
+    \item[(b)] From our notes, we know that $G_m = \frac{g_m}{1 + R/r_e}$. We can substitute in $\frac{U_T}{I_e}$ for $r_e$, and replace $I_e$ with $\frac{I_c}{\alpha}$. We can also replace $g_m = \frac{I_c}{U_T}$ in order to get:
+        
+        \begin{equation*}
+            G_m = \frac{ I_c }{ U_T + \frac{RI_c}{\alpha}}
+        \end{equation*}
+
+        Since $\alpha \approx 1$, this simplifies even further to just $G_m = \frac{ I_c }{ U_T + RI_c }$
+
+    \item[(c)]
+        We first start with an equation for $I_e$ and go through the steps shown below:
+
+        \begin{align*}
+            I_e &= \frac{I_s}{\alpha}e^{(V_b - V_e)/U_T}\\
+            I_e + \delta I_e &= \frac{I_s}{\alpha}e^{( (V_b + \delta V_b) - (V_e + \delta V_e) )/U_T} \\
+            I_e + \delta I_e &= I_ee^{(\delta V_b - \delta V_e)/U_T}\\
+            I_e + \delta I_e &= I_e(1 + \frac{\delta V_b - \delta V_e}{U_T})\\
+            \delta I_e &= I_e \frac{\delta V_b - \delta V_e}{U_T}\\
+            \frac{\delta V_e}{R} &= I_e \frac{\delta V_b - \delta V_e}{U_T}
+        \end{align*}
+
+        This we can simplify to the equation below:
+
+        \begin{equation} \label{eq:1}
+            \delta V_e = \frac{\delta V_b \cdot I_e R}{U_T + I_e R}
+        \end{equation}
+
+    \item[(d)]
+        We can start with the equation shown in equation \ref{eq:1}, and set $\delta V_e = \frac{1}{2} \delta V_b$. Thus, we have $\frac{1}{2} = \frac{I_e R}{U_T + I_e R}$. We can then substitute $I_e = \frac{I_c}{\alpha}$ and solve for $I_c$ to find that:
+
+        \begin{equation} \label{eq:2}
+            I_{on} = \frac{U_T \alpha}{R}
+        \end{equation}
+
+    \item[(e)]
+        If we have $I_{on} = I_se^{V_{be}/U_T}$, then we can solve for $V_{on} = U_T\ln(\frac{I_{on}}{I_s})$.
+
+    \item[(f)]
+        We can start with $I_e = \frac{V_e}{R}$. This can be rearranged to become $V_b = V_{be} + R \frac{I_s}{\alpha}e^{V_{be}/U_T}$. Dividing both sides by $U_T$ will give us $\frac{V_b}{U_T} = \frac{V_{be}}{U_T} + \frac{1}{I_{on}}I_se^{V_{be}/U_T}$. We can then use a variation the relation for $V_{on}$ we found before, which is $e^{V_{be}/U_T} = \frac{I_{on}}{I_s}$. If we use this, we can simplify our equation to simply be:
+
+        \begin{equation} \label{eq:3}
+            V_b = V_{be} + U_Te^{(V_{be} - V_{on})/U_T}
+        \end{equation}
+
+    \item[(g)]
+        If $V_{be} < V_{on}$ by more than a few $U_T$, then the right side of the equation \ref{eq:3} is dominated by $V_{be}$. This means that $V_b \approx V_{be}$. We can then find an expression for $I_c$ to be $I_c = I_se^{V_b/U_T}$. 
+
+    \item[(f)]
+        We can take equation \ref{eq:3} and rearrange it to be:
+        
+        \begin{equation*}
+            \frac{V_b - V_{on}}{U_T} = \frac{V_{be} - V_{on}}{U_T} + e^{(V_{be} -V_{on})/U_T}
+        \end{equation*}
+
+        When we have $V_{be} > V_{on}$, then the exponential term of the right hand equation will dominate and thus we will have:
+
+        \begin{equation*}
+            \frac{V_b - V_{on}}{U_T} \approx e^{(V_{be} -V_{on})/U_T}
+        \end{equation*}
+
+        This can then be simplified by taking the natural log of both sides and rearranging. 
+
+        \begin{equation*}
+            \frac{ V_{on} }{ U_T } + \ln\left(\frac{V_b - V_{on}}{U_T}\right) = \frac{V_{be}}{U_T}
+        \end{equation*}
+
+        We can then plug this into our standard equation for $I_c$, which is $I_c = I_se^{V_{be}/U_T}$.
+
+        \begin{equation*}
+            I_c = I_se^{ \frac{ V_{on} }{ U_T } } \left(\frac{V_b - V_{on}}{U_T}\right)
+        \end{equation*}
+
+        We can then substitute in $\frac{V_{on}}{U_T} = \ln(\frac{I_{on}}{I_s})$ and simplify to get:
+
+        \begin{equation*}
+            I_c = I_{on} \left(\frac{V_b - V_{on}}{U_T}\right)
+        \end{equation*}
+
+        Since $I_{on} = \frac{U_T \alpha}{R}$, we can plug this in to get the final relation, which is:
+
+        \begin{equation*}
+            I_c = \frac{V_b - V_{on}}{R}\alpha
+        \end{equation*}
 
 \end{itemize}
 
