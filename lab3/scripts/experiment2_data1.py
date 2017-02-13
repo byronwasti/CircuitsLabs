@@ -4,7 +4,7 @@ import seaborn as sns
 import csv
 
 TAKE_NEW_DATA = True
-FILENAME = "data/experiment2_10K_1.csv"
+FILENAME = "data/experiment2_100K_3.csv"
 
 if TAKE_NEW_DATA:
     import smu
@@ -21,6 +21,7 @@ if TAKE_NEW_DATA:
     for v in v_in:
         s.set_voltage(1, v)
         s.autorange(1)
+        s.autorange(2)
         i_b.append(s.get_current(1))
         i_e.append(-s.get_current(2))
 
