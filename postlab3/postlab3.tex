@@ -1,0 +1,29 @@
+\documentclass{article}
+\usepackage[utf8]{inputenc}
+\usepackage{amstext}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{graphicx}
+\usepackage[margin=1in, paperwidth=8.5in, paperheight=11in]{geometry}
+\usepackage{gensymb}
+\usepackage{indentfirst}
+\usepackage{textcomp}
+\usepackage{upgreek }
+\usepackage{siunitx}
+\usepackage{enumitem}
+
+\usepackage[american]{circuitikz}
+
+\title{Circuits Postlab 3}
+\author{Byron Wasti}
+\date{February 2017}
+
+\begin{document}
+\maketitle
+
+In Experiment 4, the output voltage of the inverting amplifier decreased as the input voltage increased, up until a certain point where the behavior was reversed. The point at which the behavior reversed is when the transistor became fully saturated. This occurs because as the output voltage of the inverting amplifier decreases, the voltage at the collector also decreases (because they are the same node). Since the input voltage is increasing (which is the base voltage) there comes a point where $V_b > V_c$. This means that the transistor has entered saturation, meaning the transistor acts like a short circuit. 
+
+The reason the voltage starts to increase is that since the transistor acts like a short circuit, the voltage at the output node is nominally just due to the voltage divider created by the two resistors. However, since there is still a base current, this means that the current through the lower resistor increases as the base voltage increases, and unlike a normal voltage divider, the output voltage will increase.
+
+
+\end{document}

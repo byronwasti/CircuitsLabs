@@ -21,18 +21,21 @@ with open(CUR_VOL, 'r') as f:
         Iemit.append(float(row[2]))
 
 #rbase = dVin / dIbase
-rbase = []
-for i in range(len(Ibase)):
-    rbase.append(Vin[i] / Ibase[i])
+rbase = np.diff(Vin)/np.diff(Ibase)
+#for i in range(len(Ibase)):
+#    rbase.append(Vin[i] / Ibase[i])
 
-fit1 = np.polyfit(np.log(Ibase), np.log(rbase), 1)
+fit1 = np.polyfit(np.log(Ibase[:-1]), np.log(rbase), 1)
+
 print(fit1)
 poly = np.poly1d(fit1)
-theoretical_rbase = lambda x: np.exp(poly(np.log(Ibase)))
+#theoretical_rbase = lambda x: np.exp(poly(np.log(x)))
+UT = 2.8e-2
+theoretical_rbase = [ UT / i for i in Ibase[:-1] ]
     
-plt.loglog(Ibase, rbase, '.', label=r'$r_b$ vs. $I_{base}$')
-plt.loglog(Ibase, theoretical_rbase(Ibase), label=r'theoretical $r_b$ vs. $I_{base}$')
-plt.text(1e-6, 1e6, '$r_b$ = $U_T$ / $I_B$ \n $U_T$=%eV' %(np.exp(fit1[1])))
+plt.loglog(Ibase[:-1], rbase, '.', label=r'$r_b$ vs. $I_{base}$')
+plt.loglog(Ibase[:-1], theoretical_rbase, label=r'theoretical $r_b$ vs. $I_{base}$')
+plt.text(1e-6, 1e6, '$r_b$ = $U_T$ / $I_B$ \n $U_T$=%eV' % UT )
 plt.title(r'$r_b$ vs. $I_{base}$', fontsize=20)
 plt.legend(fontsize=12)
 plt.xlabel(r'$I_{base}$ (A)', fontsize=16)
