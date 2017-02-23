@@ -26,6 +26,9 @@ UT_1 = 1/(fit1[0])
 print(Is_1, UT_1)
 fit1_ = [ Is_1*np.exp(V/UT_1) for V in x ]
 
+# Extracting \beta
+beta = 1/(4e-3 - 1.9e-5)
+
 # I_c
 x2 = x[45:150]
 y2_ = y2[45:150]
@@ -35,10 +38,6 @@ UT_2 = 1/(fit2[0])
 print(Is_2, UT_2)
 fit2_ = [ Is_2*np.exp(V/UT_2) for V in x2 ]
 
-# Extracting \beta
-beta = Is_2/Is_1
-beta = (4e-3 - 1.9e-5)
-Is_1_ = Is_1 * beta
 
 # Plotting
 plt.semilogy(x, y1, '.', label="I_b")
@@ -49,7 +48,7 @@ plt.semilogy(x2, fit2_, '-', label="Fit I_c")
 
 plt.text(0.5, 1e-3, "$I_c = I_se^{V_{be}/U_T}$\n$I_s$=%eA\n$U_T$=%eV" % (Is_2, UT_2) )
 
-plt.text(0.65, 1e-7, "$I_b = (I_s/\\beta)e^{V_{be}/U_T}$\n$I_s$=%eA\n$U_T$=%eV\n$\\beta$=%e" % (Is_1_, UT_1, beta) )
+plt.text(0.65, 1e-7, "$I_b = (I_s/\\beta)e^{V_{be}/U_T}$\n$I_s/\\beta$=%eA\n$U_T$=%eV\n$\\beta \\approx$ %e" % (Is_1, UT_1, beta) )
 
 plt.title("Voltage vs. Base Current and Collector Current")
 plt.xlabel("Voltage (V)")

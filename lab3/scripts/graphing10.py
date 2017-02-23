@@ -68,17 +68,21 @@ gm_10k = np.divide(np.diff(ic_10k_clean), np.diff(vin_10k[1:-1]))
 gm_100k = np.divide(np.diff(ic_100k_clean), np.diff(vin_100k[1:-1]))
 
 # Fit Bullshit
+alpha = 1
+
 UT = 1.5e-2
-gm_fit_1k = lambda ic: 1/1e3 * 1/(1 + UT /(ic*1e3))
+RES = 0.35e3
+gm_fit_1k = lambda ic: 1/RES * 1/(1 + UT /(ic*RES))
 gm_fitted_1k = [ gm_fit_1k(ic) for ic in ic_1k_clean[:-1] ]
 
 UT = 1.5e-2
-alpha = 1
-gm_fit_10k = lambda ic: alpha /10e3 * 1/(1 + alpha *UT /(ic*10e3))
+RES2= 3.5e3
+gm_fit_10k = lambda ic: alpha /RES2 * 1/(1 + alpha *UT /(ic*RES2))
 gm_fitted_10k = [ gm_fit_10k(ic) for ic in ic_10k_clean[:-1] ]
 
 UT = 1.5e-2
-gm_fit_100k = lambda ic: alpha /100e3 * 1/(1 + alpha *UT /(ic*100e3))
+RES3= 35e3
+gm_fit_100k = lambda ic: alpha /RES3 * 1/(1 + alpha *UT /(ic*RES3))
 gm_fitted_100k = [ gm_fit_100k(ic) for ic in ic_100k_clean[:-1] ]
 
 # Plotting
@@ -100,7 +104,7 @@ if True:
     plt.loglog(ic_100k_clean[:-1], gm_100k, '.', label="100k")
     plt.loglog(ic_100k_clean[:-1], gm_fitted_100k, '-', label="100k Fit")
 
-    plt.text(1e-7,1e-7, "Fit: $1/R * 1/ (1 + U_T / (I_c R))$ \n$U_T$ = %e\n$R \in [1K, 10K, 100K]$" % (UT) )
+    plt.text(1e-7,1e-7, "Fit: $1/R * 1/ (1 + U_T / (I_c R))$ \n$U_T$ = %e\n$R \in [%e, %e, %e]$" % (UT, RES, RES2, RES3) )
 
     plt.title("Incremental Transductance Gain as a Function of Collector Current")
     plt.xlabel("Current (A)")

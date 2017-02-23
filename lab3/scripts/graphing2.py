@@ -14,8 +14,8 @@ with open(CUR_VOL, 'r') as f:
     Iemit = []
     for i, row in enumerate(reader):
         if i == 0: continue
-        if i < 135: continue
-        if i > 183: continue
+        #if i < 135: continue
+        #if i > 183: continue
         Vin.append(float(row[0]))
         Ibase.append(float(row[1]))
         Iemit.append(float(row[2]))
