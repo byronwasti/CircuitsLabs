@@ -3,7 +3,7 @@ import matplotlib.pyplot as plt
 import seaborn as sns
 import csv
 
-TAKE_NEW_DATA = True
+TAKE_NEW_DATA = False
 FILENAME = "data/experiment2_100K_3.csv"
 
 if TAKE_NEW_DATA:
