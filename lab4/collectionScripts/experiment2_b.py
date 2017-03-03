@@ -5,7 +5,7 @@ import csv
 from time import sleep
 
 TAKE_NEW_DATA = True
-FILENAME = "../data/experiment2_y_200K_3.csv" # 2K, 20K, 200K  ; @ 0.2V V_in 
+FILENAME = "../data/experiment2_x_K_3.csv" #
 
 if TAKE_NEW_DATA:
     import smu

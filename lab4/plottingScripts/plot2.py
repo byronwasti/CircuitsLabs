@@ -44,15 +44,28 @@ for i in range(len(DATAX[0])):
     AVGY1.append(y1/4)
     AVGY2.append(y2/4)
 
+PER_DIFF_X = [ [], [], [], [] ]
+PER_DIFF_Y1 = [ [], [], [], [] ]
+PER_DIFF_Y2 = [ [], [], [], [] ]
+for i in range(4):
+    for j,x in enumerate(DATAX[i]):
+        PER_DIFF_X[i].append( abs(AVGX[j] - x ) / AVGX[j] )
+    for j,y in enumerate(DATAY1[i]):
+        PER_DIFF_Y1[i].append( abs(AVGY1[j] - y ) / AVGY1[j] )
+    for j,y in enumerate(DATAY2[i]):
+        PER_DIFF_Y2[i].append( abs(AVGY2[j] - y ) / AVGY2[j] )
+
+
+#for i in range(4):
+    #plt.semilogy(DATAX[i], DATAY1[i], '.', label="Transistor %i" % i)
+#plt.semilogy(AVGX, AVGY1, '.', label="Transistor AVG")
 
 for i in range(4):
-    plt.semilogy(DATAX[i], DATAY1[i], '.', label="Transistor %i" % i)
-
-plt.semilogy(AVGX, AVGY1, '.', label="Transistor AVG")
+    plt.plot(AVGX, PER_DIFF_Y1[i], '.', label="Transistor %i" % i)
 
 plt.xlabel("Base Voltage (V)")
-plt.ylabel("Collector Current (A)")
-plt.title("Collector Current vs. Base Voltage")
+plt.ylabel("Percent Difference from Mean")
+plt.title("Percent Difference from Mean Value as a Function of Base Voltage")
 plt.legend()
 plt.show()
 
