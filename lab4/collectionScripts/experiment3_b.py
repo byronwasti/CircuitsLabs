@@ -1,6 +1,6 @@
 '''
-Stepwise vary I_y and sweep I_x
-V_in = 0.187V
+Stepwise vary I_x and sweep I_y
+V_in @ 4.01V
 '''
 import numpy as np
 import matplotlib.pyplot as plt
@@ -9,7 +9,7 @@ import csv
 from time import sleep
 
 TAKE_NEW_DATA = True
-FILENAME = "../data/experiment3_y_200K_3.csv" # 2K, 20K, 200K  ; @ 0.2V V_in 
+FILENAME = "../data/experiment3_x_200K_3.csv" #2K, 20K, 200K  ; @ 4V V_in
 
 if TAKE_NEW_DATA:
     import smu
@@ -18,17 +18,16 @@ if TAKE_NEW_DATA:
     f = open(FILENAME, "wb")
     writer = csv.writer(f)
 
-    ix = np.logspace(-8, -3, 250)
-    #ix = np.linspace(1e-8, 1e-3, 200)
+    iy = -np.logspace(-8, -3, 250)
     iz = []
 
     #s.set_voltage(2, 0.)
-    for i in ix:
+    for i in iy:
         s.set_current(1, i)
 
         s.autorange(1)
         s.autorange(2)
-
+    
         cur2 = s.get_current(2)
 
         iz.append(cur2)
@@ -36,12 +35,12 @@ if TAKE_NEW_DATA:
     s.set_current(1, 0.)
     s.set_voltage(2, 0.)
 
-    data = zip(ix, iz)
-    writer.writerow(["I_x(Ch1)", "I_z(Ch2)"])
+    data = zip(iy, iz)
+    writer.writerow(["I_y(Ch1)", "I_z(Ch2)"])
     writer.writerows(data)
     f.close()
 
-    x = ix
+    x = iy
     y = iz
 
 
@@ -64,12 +63,4 @@ if True:
     ax1.set_ylabel("Iz Current")
 
     plt.show()
-
-    #plt.plot(x, y1, '.', label="i_b")
-    #plt.plot(x, y2, '.', label="i_e")
-    #plt.legend()
-    #plt.xlabel("Voltage")
-    #plt.ylabel("Current")
-    #plt.show()
-
 
