@@ -41,8 +41,8 @@ for i in range(4):
 
 
 plt.xlabel("Base Voltage (V)")
-plt.ylabel("Collector Current (A)")
-plt.title("Collector Current vs. Base Voltage")
+plt.ylabel("Current (A)")
+plt.title("Current vs. Base Voltage")
 plt.legend()
 plt.show()
 
