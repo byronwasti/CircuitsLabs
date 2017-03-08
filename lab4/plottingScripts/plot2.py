@@ -22,7 +22,7 @@ for j, FILENAME in enumerate(FILENAMES):
 
         for i, row in enumerate(reader):
             if i == 0 : continue
-            if float(row[0]) > 0.7 : continue
+            if float(row[0]) > 0.9 : continue
             if float(row[0]) < 0.4 : continue
             DATAX[j].append(float(row[0]))
             DATAY1[j].append(float(row[1]))
