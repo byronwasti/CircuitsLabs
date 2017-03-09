@@ -5,7 +5,7 @@ import csv
 from time import sleep
 
 TAKE_NEW_DATA = True
-FILENAME = "../data/experiment1_nmos_5_DENSE.csv"
+FILENAME = "../data/experiment1_nmos_5_DENSE_BEST.csv"
 
 if TAKE_NEW_DATA:
     import smu
@@ -14,7 +14,7 @@ if TAKE_NEW_DATA:
     f = open(FILENAME, "wb")
     writer = csv.writer(f)
 
-    vin = np.linspace(0, 5, 1000)
+    vin = np.linspace(5, 0, 1000)
     ichannel = []
 
     s.set_voltage(2, 5.)
