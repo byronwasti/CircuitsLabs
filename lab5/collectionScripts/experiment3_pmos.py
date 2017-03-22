@@ -6,7 +6,7 @@ import csv
 from time import sleep
 
 TAKE_NEW_DATA = True
-FILENAME = "../data/experiment3_pmos_weak_1.csv"
+FILENAME = "../data/experiment3_pmos_weak_5.csv"
 
 if TAKE_NEW_DATA:
     import smu
@@ -15,18 +15,21 @@ if TAKE_NEW_DATA:
     f = open(FILENAME, "wb")
     writer = csv.writer(f)
 
-    GATE_V = 0.7
-    #vin = np.linspace(0, 5, 500)
-    vin = np.logspace(-2, 0.7, 500)
+    GATE_V = -0.6
+    #vin = np.linspace(0, -5, 100)
+    vin = -np.logspace(-2, 0.7, 500)
+    #vin = -np.linspace(0.7, -2, 500)
     ichannel = []
 
     s.set_voltage(2, GATE_V)
     for v in vin:
         s.set_voltage(1, v)
         s.autorange(1)
+        s.autorange(2)
         ichannel.append(s.get_current(1))
 
     s.set_voltage(1, 0.)
+    s.set_voltage(2, 0.)
 
     data = zip(vin, ichannel)
     writer.writerow(["V_drain", "I_channel", "V_gate = %f" % GATE_V])
