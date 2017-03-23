@@ -12,8 +12,8 @@ def get_data(FILENAME):
         reader = csv.reader(f)
         for i, row in enumerate(reader):
             if i==0 : continue
-            vdrain.append(float(row[0]))
-            ichannel.append(float(row[1]))
+            vdrain.append(5+float(row[0]))
+            ichannel.append(-float(row[1]))
 
     return np.array(vdrain), np.array(ichannel)
 
@@ -35,7 +35,7 @@ def early_voltage(FILENAME, limits):
     print(fit[1])
     #print(-v_early)
 
-    return fit[1], v_early
+    return fit[1], -v_early
 
     #plt.figure()
     #plt.semilogy(vdrain_o, ichannel_o)
@@ -45,15 +45,15 @@ def early_voltage(FILENAME, limits):
 
 if __name__ ==  "__main__":
 
-    i_sat0, v_early0 = early_voltage("../data/experiment3_nmos_weak_3.csv", [ 0.5, 3 ])
-    i_sat1, v_early1 = early_voltage("../data/experiment3_nmos_moderate_3.csv", [ 0.5, 3 ])
-    i_sat2, v_early2 = early_voltage("../data/experiment3_nmos_strong_2.csv", [ 3, 5 ])
+    i_sat0, v_early0 = early_voltage("../data/experiment3_pmos_weak_4.csv", [ 3.4, 4.8 ])
+    i_sat1, v_early1 = early_voltage("../data/experiment3_pmos_moderate_3.csv", [ 3.4, 4.8 ])
+    i_sat2, v_early2 = early_voltage("../data/experiment3_pmos_strong_4.csv", [ 0, 2 ])
 
     plt.semilogx(i_sat0, v_early0, 'X', label="Weak Inversion")
     plt.semilogx(i_sat1, v_early1, 'X', label="Moderate Inversion")
     plt.semilogx(i_sat2, v_early2, 'X', label="Strong Inversion")
 
-    plt.title("nMOS Early Voltage")
+    plt.title("pMOS Early Voltage")
     plt.ylabel("Early Voltage (V)")
     plt.xlabel("$I_{sat}$ (A)")
     plt.legend()
