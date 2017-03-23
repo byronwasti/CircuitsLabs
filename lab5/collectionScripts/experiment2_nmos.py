@@ -5,7 +5,7 @@ import csv
 from time import sleep
 
 TAKE_NEW_DATA = True
-FILENAME = "../data/experiment2_nmos_3.csv"
+FILENAME = "../data/experiment2_nmos_1_Take2.csv"
 
 if TAKE_NEW_DATA:
     import smu
@@ -20,12 +20,12 @@ if TAKE_NEW_DATA:
     for v in vin:
         s.set_voltage(1, v)
         s.autorange(1)
-        ichannel.append(s.get_current(1))
+        ichannel.append(-s.get_current(1))
 
     s.set_voltage(1, 0.)
 
     data = zip(vin, ichannel)
-    writer.writerow(["V_gate", "I_channel"])
+    writer.writerow(["V_source", "I_channel"])
     writer.writerows(data)
     f.close()
 
@@ -46,11 +46,10 @@ if not TAKE_NEW_DATA:
 
 
 if True:
-    fig, ax1 = plt.subplots()
 
-    ax1.plot(x, y1, '.', label="i_channel")
-    ax1.set_xlabel("Voltage")
-    ax1.set_ylabel("Current")
+    plt.plot(x, y1, '.', label="i_channel")
+    plt.xlabel("Voltage")
+    plt.ylabel("Current")
 
     plt.show()
 

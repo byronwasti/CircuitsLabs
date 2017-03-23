@@ -15,35 +15,35 @@ def plot_things(FILENAME, label):
             vsource.append(float(row[0]))
             ichannel.append(float(row[1]))
 
-    ichannel = -np.array(ichannel)
+    ichannel = np.array(ichannel)
     plt.semilogy(vsource, ichannel, '.', label=label)
 
     return zip(vsource, ichannel)
 
-
 def plot_fit(data):
-    vsource_orig = np.array([ i[0] for i in data if i[0] > 3 and i[0] < 3.8])
+    vsource_orig = np.array([ i[0] for i in data if i[0] > -4 and i[0] < -3.4])
 
-    data_filtered = [ i for i in data if i[0] > 3.5 and i[0] < 3.7 ]
+    data_filtered = [ i for i in data if i[0] > -3.8 and i[0] < -3.6 ]
+    
     vsource = np.array([i[0] for i in data_filtered])
     ichannel = np.array([i[1] for i in data_filtered])
 
     log_ichannel = np.log(ichannel)
+
     fit = np.polyfit(vsource, log_ichannel, 1)
     theoretical = np.exp(fit[0]*vsource_orig)*np.exp(fit[1])
 
     plt.semilogy(vsource_orig, theoretical, '-', label='Theoretical')
 
-    plt.text(4, 1e-3, "Fit ax + b\na=%e$\mho$\nb=%eA" % (fit[0], fit[1]) )
+    plt.text(-5, 1e-4, "Fit ax + b\na=%e$\mho$\nb=%eA" % (fit[0], fit[1]) )
     print(fit)
 
 if __name__ == "__main__":
-
-    data = plot_things("../data/experiment2_nmos_1.csv", "nMOS Data")
+    data = plot_things("../data/experiment2_pmos_3.csv", "pMOS Data")
     plot_fit(list(data))
 
     plt.legend()
     plt.xlabel("Source Voltage (V)")
     plt.ylabel("Channel Current (A)")
-    plt.title("nMOS Source Characteristics")
+    plt.title("pMOS Source Characteristics")
     plt.show()
