@@ -16,7 +16,7 @@ def plot_things(FILENAME, label):
             ichannel.append(float(row[1]))
 
     ichannel = np.array(ichannel)
-    plt.semilogy(vsource, ichannel, '.', label=label)
+    plt.semilogy(np.array(vsource)+5, ichannel, '.', label=label)
 
     return zip(vsource, ichannel)
 
@@ -33,9 +33,9 @@ def plot_fit(data):
     fit = np.polyfit(vsource, log_ichannel, 1)
     theoretical = np.exp(fit[0]*vsource_orig)*np.exp(fit[1])
 
-    plt.semilogy(vsource_orig, theoretical, '-', label='Theoretical')
+    plt.semilogy(vsource_orig+5, theoretical, '-', label='Theoretical')
 
-    plt.text(-5, 1e-4, "Fit ax + b\na=%e$\mho$\nb=%eA" % (fit[0], fit[1]) )
+    plt.text(0, 1e-4, "Fit ax + b\na=%e$\mho$\nb=%eA" % (fit[0], fit[1]) )
     print(fit)
 
 if __name__ == "__main__":

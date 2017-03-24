@@ -1,0 +1,73 @@
+\documentclass{article}
+\usepackage[utf8]{inputenc}
+\usepackage{amstext}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{graphicx}
+\usepackage[margin=1in, paperwidth=8.5in, paperheight=11in]{geometry}
+\usepackage{gensymb}
+\usepackage{indentfirst}
+\usepackage{textcomp}
+\usepackage{upgreek }
+\usepackage{siunitx}
+\usepackage{enumitem}
+
+\usepackage[american]{circuitikz}
+
+\title{Circuits Prelab 6}
+\author{Byron Wasti}
+\date{March 2017}
+
+\begin{document}
+\maketitle
+
+\section{Problem 1}
+\begin{itemize}
+    \item[(a)]
+        For two nMOS transistors in parallel we can use KCL to find that $I = I_1 + I_2$ where $I_1$ and $I_2$ are the currents flowing through transistor 1 and 2 respectively. Since the two transistors are identical, we can plug in the equations for $I_1$ and $I_2$ to get $I = I_s(f(V_G,V_S) - f(V_G,V_D)) + I_s(f(V_G,V_S) - f(V_G,V_D))$, which is equivalent to:
+        
+        \begin{equation}
+            I = 2I_s(f(V_G,V_S) - f(V_G,V_D))
+        \end{equation}
+
+        Thus, the current through two nMOS transistors in parallel is twice the channel current of either single transistor.
+
+    \item[(b)] 
+        For two nMOS transistors in series, KCL tells us that $I_1 = I_2$ where $I_1$ and $I_2$ are the currents flowing through transistor 1 and 2 respectively. We can rewrite this equation as $I_s(f(V_G,V_{S1}) - f(V_G,V_{D1})) = I_s(f(V_G,V_{S2}) - f(V_G,V_{D2}))$. However, since the two transistors are in series, $V_{D2} = V_{S1}$, and thus we have $I_s(f(V_G,V_{S1}) - f(V_G,V_{D1})) = I_s(f(V_G,V_{S2}) - f(V_G,V_{S1}))$. We can then subtract $f(V_g, V_{D1})$ from both sides and simplify to get:
+
+        \begin{equation}
+            I_s(f(V_G, V_{S1}) - f(V_G,V_{D1})) = \frac{1}{2}I_s(f(V_G, V_{S2}) - f(V_G,V_{D1}))
+        \end{equation}
+
+        The right hand side of the equation is the equivalent transistor, while the left hand side is one of the original transistors. Thus, the current through two transistors in series is equivalent to a transistors with a current of half either of the two transistors.
+
+\end{itemize}
+
+\section{Problem 2}
+\begin{itemize}
+    \item[(a)]
+        $I_{in} = I_1 + I_2$ due to KCL for both current dividers.
+
+    \item[(b)]
+        We know that $I_{in} = (I_{s1} + I_{s2})(f(V_G,V_S) - f(V_G,V_D))$ form part (a). We also know that $I_1 = I_{s1}(f(V_G,V_S) - f(V_G,V_D))$. Dividing $I_1$ by $I_{in}$ and simplifying gives us:
+
+        \begin{equation}
+            \frac{I_1}{I_{in}} = \frac{I_{s1}}{I_{s1} + I_{s2}}
+        \end{equation}
+
+        Due to symmetry, we also know that:
+        \begin{equation}
+            \frac{I_2}{I_{in}} = \frac{I_{s2}}{I_{s1} + I_{s2}}
+        \end{equation}
+
+    \item[(c)]
+        Assuming no Early effect, then $I_{sat}$ is independent of $V_D$. Thus, the divider ratios still hold when $V_1 \ne V_2$ for Fig. 6.2a, since $V_1$ and $V_2$ are on the drain of the transistors. For Fig. 6.2b, the divider ratios do not hold, since $I_{sat}$ is dependent on $V_S$, which is $V_1$ and $V_2$ for transistor 1 and transistor 2 respectively.
+
+    \item[(d)]
+        The maximum input currents that each circuit can accept is $2I_{sat}$, since if we ignore the Early effect, the transistors cannot source additional current. For Fig. 6.2a, if the input current excedes $2I_{sat}$, it will need to draw current from the node capacitance, thus lowering the voltage of the source of the transistors. This means that the source voltage of the transistors will be lower than the bulk voltage, which is not shown connected in the diagram, but which is implicitly connected to ground. Since the source voltage is lower than the bulk voltage, the "diode" allows current to flow from the bulk, thus supplying the current from the ground voltage.
+
+        For Fig. 6.2b, if the current limit were exceded, then the node capacitances at the drain of the transistors would be filled up, and would rise in voltage. They would continue to rise until the transistor failed and let out the magic smoke.
+
+\end{itemize}
+
+\end{document}

@@ -1,0 +1,43 @@
+\documentclass{article}
+\usepackage[utf8]{inputenc}
+\usepackage{amstext}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{graphicx}
+\usepackage[margin=1in, paperwidth=8.5in, paperheight=11in]{geometry}
+\usepackage{gensymb}
+\usepackage{indentfirst}
+\usepackage{textcomp}
+\usepackage{upgreek }
+\usepackage{siunitx}
+\usepackage{enumitem}
+
+\usepackage[american]{circuitikz}
+
+\title{Circuits Postlab 5}
+\author{Byron Wasti}
+\date{March 2017}
+
+\begin{document}
+\maketitle
+
+\section{nMOS}
+
+\begin{itemize}
+    \item [Strong 0: ] A strong 0 for an nMOS transistor is essentially looking at the drain characteristics of an nMOS transistor when the drain is connected to a node-capacitance. Our data from Experiment 3 shows us the drain characteristics of an nMOS transistor, which shows that the current continues to decay exponentially as $V_{drain}$ gets closer to $0V$. This means that the voltage difference between $V_{source}$ (which is at $0V$ by definition) and $V_{drain}$ continues to get exponentially smaller. This is why an nMOS produces a strong 0.
+
+
+    \item [Weak 1: ]  On the flipside, a weak 1 can be analyzed by looking at an nMOS's source characteristics. We did this in Experiment 2, and found that the current seemed to reach a constant value when the source voltage reached $4V$ to $5V$. Since there is current flow, that means there is a voltage difference between $V_{drain}$ (which is $5V$ by definition) and $V_{source}$. Thus, an nMOS produces a weak 1.
+
+\end{itemize}
+
+\section{pMOS}
+
+\begin{itemize}
+    \item [Weak 0: ] For a pMOS transistor, we can analyze why it produces a weak 0 by looking at the source charcateristics of the pMOS transistor. From Experiment 2, we see that the current reaches a constant value once the pMOS transistor's source voltage gets close to 0V. This means that there is a voltage difference between $V_{drain}$ (which is $0V$ by definition) and $V_{source}$, which means that $V_{source}$ is a weak 0.
+
+    \item [Strong 1: ] A strong 1 for a pMOS transistor can be seen due to the analysis of the drain characteristics of a pMOS transistor, which we did in Experiment 3. The current continues to decay exponentially as $V_{drain}$ gets closer to $5V$, which means that the voltage difference between $V_{source}$ ($5V$ by definition) and $V_{drain}$ continues to decrease. Thus, the pMOS is able to produce a strong 1.
+
+\end{itemize}
+
+\end{document}
