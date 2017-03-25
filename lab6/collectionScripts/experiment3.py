@@ -5,7 +5,7 @@ import csv
 from time import sleep
 
 TAKE_NEW_DATA = True
-FILENAME = "../data/experiment3_current_divider_1.csv"
+FILENAME = "../data/experiment3_current_divider_b_3.csv"
 
 if TAKE_NEW_DATA:
     import smu
@@ -14,10 +14,10 @@ if TAKE_NEW_DATA:
     f = open(FILENAME, "wb")
     writer = csv.writer(f)
 
-    i_in = np.linspace(0, -10e-3, 100)
+    i_in = np.linspace(0, 15e-3, 100)
     i_out = []
 
-    s.set_voltage(2, 5.)
+    s.set_voltage(2, 0.)
     for i in i_in:
         s.set_current(1, i)
 
