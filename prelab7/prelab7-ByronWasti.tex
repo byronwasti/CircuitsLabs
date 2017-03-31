@@ -1,0 +1,72 @@
+\documentclass{article}
+\usepackage[utf8]{inputenc}
+\usepackage{amstext}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{graphicx}
+\usepackage[margin=1in, paperwidth=8.5in, paperheight=11in]{geometry}
+\usepackage{gensymb}
+\usepackage{indentfirst}
+\usepackage{textcomp}
+\usepackage{upgreek }
+\usepackage{siunitx}
+\usepackage{enumitem}
+
+\usepackage[american]{circuitikz}
+
+\title{Circuits Prelab 7}
+\author{Byron Wasti}
+\date{March 2017}
+
+\begin{document}
+\maketitle
+
+\section{Problem 1}
+
+\begin{itemize}
+    \item[(a)] 
+        In general $I_b = I_1 + I_2$ due to KCL and assuming the transistors are in saturation.
+
+    \item[(b)] 
+        If $V_1 = V_2 = V_{cm}$, then the two transistors are matched and are acting in parallel. Thus, the current through $M_1$ and $M_2$ are the same. Therfore $I_1 = I_2 = \frac{1}{2}I_b$.
+
+    \item[(c)] 
+        We can imagine what happens when $V_1$ exceeds $V_2$ by several tenths of a volt by first having them equal, and then increasing $V_1$ by several tenths of a volt. As $V_1$ increases, $I_1$ will since $V_{GS}$ will increase. Since $I_2$ has remained the same, and $I_b = I_1 + I_2$, an increase in $I_1$ will drive the voltage at the source node up. This will decrease the $V_{GS}$ for $M_2$, such that $I_2$ will decrease; $I_1$ will also decrease from the originally increased state, but will remain above $\frac{1}{2}I_b$. 
+
+        Thus we will have $I_1 > I_2$. Since the voltage of $V_1$ is greater than $V_2$ by several tenths of a volt, then $I_1 \approx I_b$ and $I_2$ is so small that it is negligible. This is because the source-node voltage will increase such that $I_b = I_1 + I_2$ will remain true.
+
+        Assuming $V$ is high enough to keep $M_b$ in saturation, then $V \approx \kappa(V_1 - V_b)$, which is from the equation we received in class for a source-follower.
+
+    \item[(d)]
+        Since the circuit is symmetrical, then when $V_2$ exceeds $V_1$ by several tenths of a volt, $I_2 > I_1$. $I_2 \approx I_b$ and $I_1 \approx 0$. Lastly, $V \approx \kappa(V_2 - V_b)$, once again to due symmetry and using the argument above.
+
+    \item[(e)]
+        The approximate relationship that describes how $V$ depends on $V_1$, $V_2$ and $V_b$ if $V$ is high enough for $M_b$ to be saturated is $V \approx \kappa(max(V_1, V_2) - V_b)$. This is from our equation from class. The constraint on $V_1$ and $V_2$ is that $\kappa( max(V_1,V_2) - V_b) > V_{DSsat}$, such that $M_b$ is still in saturation.
+        
+\end{itemize}
+
+\section{Problem 2}
+
+\begin{itemize}
+    \item[(a)] 
+        In general $I_b = I_1 + I_2$ due to KCL and assuming the transistors are in saturation.
+
+    \item[(b)]
+        If $V_1 = V_2 = V_{cm}$, then the two transistors are matched and are acting in parallel. Thus, the current through $M_1$ and $M_2$ are the same, which means $I_1 = I_2$. Due toe KCL from part (a), $I_1 = I_2 = \frac{1}{2}I_b$.
+
+    \item[(c)]
+        If $V_1$ exceeds $V_2$ by several tenths of a volt, then, assuming we start from $V_1 = V_2$, $I_1$ will decrease. Since $I_b$ is still flowing into the source node, then $V$ increases, such that $I_1$ increases relative to its initial decrease (but still remains less than $\frac{1}{2}I_b$) while $I_2$ will increase to greater than $\frac{1}{2}I_b$. The approximate values of $I_1$ and $I_2$ under these circumstances would be $I_2 \approx I_b$ and $I_1 \approx 0$, since $V_{GS}$ for $M_1$ is small enough that there is negligible current for $I_1$.
+
+        $V$, under these circumstances, would approximately be $V = V_{dd} - \kappa (V_b - V_2)$, since this circuit now acts like a source-follower with $M_2$.
+        
+    \item[(d)]
+        Due to symmetry, if $V_2$ exceeds $V_1$ by several tenths of a volt, then $I_1 > I_2$. $I_1 \approx I_b$ and $I_2 \approx 0$, due to the same argument used above. Additionally, $V \approx V_{dd} - \kappa (V_b - V_1)$.
+
+    \item[(e)]
+        The approximate relationship that holds for $V$ can be derived from the form for $n$MOS transistors. Using our method for converting to $p$MOS transistors, we can subtract all voltages from $V_{dd}$ and thus get the equation: $(V_{dd} - V) \approx \kappa( max( V_{dd} - V_1, V_{dd} - V_2 ) - (V_{dd} - V_b) )$. This simplifies into $V \approx V_{dd} - \kappa( max( V_{dd} - V_1, V_{dd} - V_2 ) - (V_{dd} - V_b) )$.
+
+        The constraints on $V_1$ and $V_2$ are such that $M_b$ remains in saturation. Thus, $V_{DSsat} > V_{dd} - \kappa( max( V_{dd} - V_1, V_{dd} - V_2 ) - (V_{dd} - V_b) )$.
+
+\end{itemize}
+
+\end{document}
