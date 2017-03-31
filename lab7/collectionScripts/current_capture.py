@@ -5,7 +5,7 @@ import csv
 from time import sleep
 
 TAKE_NEW_DATA = True
-FILENAME = "../data/experiment3_current_divider_b_3.csv"
+FILENAME = "../data/strong_V2-3V_I2_4.csv"
 
 if TAKE_NEW_DATA:
     import smu
@@ -14,27 +14,26 @@ if TAKE_NEW_DATA:
     f = open(FILENAME, "wb")
     writer = csv.writer(f)
 
-    i_in = np.linspace(0, 15e-3, 100)
+    v_in = np.linspace(-2, 2, 200)
     i_out = []
 
-    s.set_voltage(2, 0.)
-    for i in i_in:
-        s.set_current(1, i)
+    s.set_voltage(2, 5.)
+    for n in  v_in:
+        s.set_voltage(1, n)
 
         s.autorange(1)
         s.autorange(2)
     
         i_out.append(s.get_current(2))
 
-    s.set_current(1, 0.)
-    s.set_voltage(2, 0.)
+    s.set_voltage(1, 0.)
 
-    data = zip(i_in, i_out)
-    writer.writerow(["I_input", "I_output"])
+    data = zip(v_in, i_out)
+    writer.writerow(["V_input", "I_1"])
     writer.writerows(data)
     f.close()
 
-    x = i_in
+    x = v_in
     y1 = i_out
 
 
@@ -54,7 +53,7 @@ if True:
     fig, ax1 = plt.subplots()
 
     ax1.plot(x, y1, '.', label="i_channel")
-    ax1.set_xlabel("Current In")
+    ax1.set_xlabel("Voltage In")
     ax1.set_ylabel("Current Out")
 
     plt.show()
