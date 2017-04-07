@@ -23,7 +23,7 @@ def plotStuff( x, y, label):
 
 
 def plot():
-    plt.xlabel("$V_{in}$")
+    plt.xlabel("$V_{dm}$")
     plt.ylabel("$V_{out}$")
     plt.title("Weak VTC")
     plt.legend()
