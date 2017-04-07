@@ -58,6 +58,6 @@ if __name__ == "__main__":
     fit2 = plotStuff( vdiff1_35V, i1_35V - i2_35V, "Weak @ 3.5V", "Fit2: Fit for Weak @ 3.5V")
     fit3 = plotStuff( vdiff1_4V, i1_4V - i2_4V, "Weak @ 4V", "Fit3: Fit for Weak @ 4V")
 
-    plt.text(0.1, 0, "I = mV + b\nFit1: m=%eV b=%eA\nFit2: m=%eV b=%eA\nFit3: m=%eV b=%eA" % (fit1[0], fit1[1],fit2[0], fit2[1],fit3[0], fit3[1] ) )
+    plt.text(0.1, 0, "I = mV + b\nFit1: m=%e$\mho$ b=%eA\nFit2: m=%e$\mho$ b=%eA\nFit3: m=%e$\mho$ b=%eA" % (fit1[0], fit1[1],fit2[0], fit2[1],fit3[0], fit3[1] ) )
 
     plot()

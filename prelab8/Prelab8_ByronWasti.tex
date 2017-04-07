@@ -1,0 +1,63 @@
+\documentclass{article}
+\usepackage[utf8]{inputenc}
+\usepackage{amstext}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{graphicx}
+\usepackage[margin=1in, paperwidth=8.5in, paperheight=11in]{geometry}
+\usepackage{gensymb}
+\usepackage{indentfirst}
+\usepackage{textcomp}
+\usepackage{upgreek }
+\usepackage{siunitx}
+\usepackage{enumitem}
+
+\usepackage[american]{circuitikz}
+
+\title{Circuits Prelab 8}
+\author{Byron Wasti}
+\date{April 2017}
+
+\begin{document}
+\maketitle
+
+    \section{Problem 1}
+        We know that $I_2$ is going through $M_2$, and $I_1$ is going through $M_1$. Since $M_3$ and $M_4$ create a current mirror, we also know that $I_1$ is going through both $M_3$ (since they are in series) as well as $M_4$. Thus, from KCL at the node for $V_{out}$, we know that $I_{out} = I_1 - I_2$.
+
+    \section{Problem 2}
+        \begin{itemize}
+            \item [(positive)] 
+                If $I_{out}$ is positive when the voltage source is disconnected, then that means that $I_1 > I_2$. Thus, since there is more current going into the $V_{out}$ node, the capacitance at that node will be filled, meaning that $V_{out}$ would rise.
+
+            \item [(negative)]
+                If $I_{out}$ is negative, then using similar logic to above except with current being taken from the node capacitance, $V_{out}$ will decrease.
+
+            \item [(zero)]
+                If $I_{out}$ is zero when the voltage source is disconnected, then there is no excess current draw or supply at the node, so $V_{out}$ will remain the same value.
+
+        \end{itemize}
+
+    \section{Problem 3}
+        $V_1$ is the non-inverting input, since as $V_1$ increases, $I_1$ increases, which leads to excess current at $V_{out}$, leading to $V_{out}$ increasing in voltage, as described above.
+
+        $V_2$ is the inverting input, because if we follow the same reasoning as above except with $V_2$ decreasing, the same effect will occur ($V_{out}$ increasing). 
+
+    \section{Problem 4}
+        Assuming no Early effect, if $V_1 = V_2 = V_{cm}$ then $I_1 = I_2 = \frac{1}{2}I_b$. Since $I_1$ and $I_2$ are equal, there is no excess, or lack of, current at the $V_{out}$ node. Thus $I_{out}$ would be zero amps.\\
+
+        If we change $V_{cm}$ there would be no change in $I_{out}$, since $I_1$ will continue to equal $I_2$.\\
+
+        Under these circumstances, since the output voltage ($V_{out}$) is independent of the input voltage ($V_{cm}$), the incremental common-mode voltage gain of the circuit would be zero.\\
+
+        If $V_{dm}$ were increased by a small amount, then $I_{out}$ would be positive, since there is excess current at the $V_{out}$ node.\\
+
+        If the output were disconnected from the voltage source, then $V_{out}$ would increase -- due to the node capacitance being charged -- until $M_4$ was no longer in saturation.\\
+
+        If $V_{dm}$ were to be decreased by a small amount, then $V_{out}$ would decrease until $M_2$ was no longer in saturation. This is because $I_2 > I_1$, and therefore $M_2$ would draw more current than $M_4$ would be supplying, leading to the node capacitance to be depleted.
+
+        Under these circumstances, since $V_{out}$ changes significantly for minuscule changes in $V_{dm}$, then $A_{dm} \approx \delta V_{out} / \delta V_{dm} = \infty$.
+
+
+
+
+\end{document}
