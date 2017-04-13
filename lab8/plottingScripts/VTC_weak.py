@@ -34,7 +34,7 @@ if __name__ == "__main__":
     v_in2, v_out2 = getData("../data/VTC_V2=3.25V_1.csv")
     v_in3, v_out3 = getData("../data/VTC_V2=4V_1.csv")
 
-    plotStuff( v_in1, v_out1, "$V_2 = 3V$" )
+    plotStuff( v_in1, v_out1, "$V_2 = 2.5V$" )
     plotStuff( v_in2, v_out2, "$V_2 = 3.25V$" )
     plotStuff( v_in3, v_out3, "$V_2 = 4V$" )
 
