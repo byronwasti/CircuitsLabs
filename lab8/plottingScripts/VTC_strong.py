@@ -25,7 +25,7 @@ def plotStuff( x, y, label):
 def plot():
     plt.xlabel("$V_{in}$")
     plt.ylabel("$V_{out}$")
-    plt.title("Weak VTC")
+    plt.title("Strong VTC")
     plt.legend()
     plt.show()
 
