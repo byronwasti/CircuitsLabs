@@ -5,7 +5,7 @@ import csv
 from time import sleep
 
 TAKE_NEW_DATA = True
-FILENAME = "../data/exp3_unityGain_1.csv"
+FILENAME = "../data/exp3_unityGain_data2_2.csv"
 
 if TAKE_NEW_DATA:
     import smu
