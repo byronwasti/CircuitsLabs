@@ -1,0 +1,64 @@
+\documentclass{article}
+\usepackage[utf8]{inputenc}
+\usepackage{amstext}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{graphicx}
+\usepackage[margin=1in, paperwidth=8.5in, paperheight=11in]{geometry}
+\usepackage{gensymb}
+\usepackage{indentfirst}
+\usepackage{textcomp}
+\usepackage{upgreek }
+\usepackage{siunitx}
+\usepackage{enumitem}
+
+\usepackage[american]{circuitikz}
+
+\title{Circuits Prelab 9}
+\author{Byron Wasti}
+\date{April 2017}
+
+\begin{document}
+\maketitle
+
+\section{Problem 1}
+
+    The noninverting input to the differential amplifier is $V_1$ since $V_{out}$ rails at $V_{dd}$ when $V_1 > V_2$. This is because $I_1 > I_2$, and due to the current mirrors, there will be excess current at $V_{out}$ until $V_{out}$ is high enough for $M_4$ to no longer be in saturation. Thus, we also know that $V_2$ is the inverting input.
+
+
+\section{Problem 2}
+
+    Using our knowledge of current mirrors, and KCL, we know that $I_{out} = I_1 - I_2$.
+
+\section{Problem 3}
+
+    If $V_1 \approx V_2$ then $I_{out} = G_mV_{dm}$, where $V_{dm} = V_1 - V_2$. This is because the circuit's inputs are close enough to each other for the circuit to operate in the differential-mode gain region.
+
+    If $V_1 \ll V_2$ then $I_2 \approx I_b$, which means that $I_{out} = -I_b$ due to the current mirrors creating a current sink.
+
+    If $V_1 \gg V_2$ then $I_1 \approx I_b$, which means that $I_{out} = I_b$.
+
+
+\section{Problem 4}
+
+    If $V_{in}$ has remained constant for a long time, then $V_{out} = V_{in}$ since the circuit is hooked up as a unity-gain follower. The capacitor in this case has no effect since the system is in a steady-state.\\
+
+    If $V_{in}$ were to have a small-amplitude step, we could model the system using the differential equation below:
+
+    \begin{equation}
+        G_mV_{out} + C \dot{V_{out}} -G_mV_{in} = 0
+    \end{equation}
+
+    The solution to this differential equation is well known, and is shown below:
+
+    \begin{equation}
+        V_{out} = V_{in}G_m \left(1 - e^{\frac{-t}{C/G_m}} \right)
+    \end{equation}
+
+    Thus, we know that \textbf{if $V_{in}$ has a small-amplitude step, $V_{out}$ would increase exponentially with a time constant of $C/G_m$ until it reaches $V_{in}$.} \\
+
+    If $V_{in}$ were to have a large-amplitude step, we would have a slightly different differential equation since the output current would be a constant value. Thus, $\dot{V_{out}} = CI_b$. Solving this differential equation, we simply get $V_{out} = I_bCt$. 
+    
+    \textbf{Using this, we can then see that if $V_{in}$ were to have a large-amplitude step, $V_{out}$ would increase linearly with a slope of $I_bC$, until it is close to $V_{in}$, in which case it will increase exponentially as shown above for the small-amplitude step case.}
+
+\end{document}

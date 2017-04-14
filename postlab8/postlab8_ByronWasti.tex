@@ -28,9 +28,9 @@ When analyzing what happens to the circuit in the first experiment, we can break
 \begin{itemize}
 
     \item [($V_1 < V_2$):]
-        First, we can ignore the region where $V_1 < V_b$, since neither $M_1$ or $M_2$ will be in saturation, and the circuit will not pass any current. 
+        First, we can ignore the region where $V_1 < V_b$, since none of $M_1$, $M_2$ or $M_b$ will be in saturation, and the circuit will not pass any current or have any change when $V_1$ varies.
         
-        In the region where $V_b < V_1 < V_2$, however, $V_{out}$ cannot drop below approximately $\kappa(V_1 -V_b)$. This is due to the fact that $M_1$ and $M_2$ pass the same amount of current, and $M_1$ in parallel with $M_2$ act as a source-follower with $M_b$. Thus, we know that $V \approx \kappa(V_1 - V_b)$ since the current through both $M_2$ and $M_1$ is controlled by $V_1$.
+        In the region where $V_b < V_1 < V_2$, however, $V_{out}$ cannot drop below approximately $\kappa(V_1 -V_b)$. This is due to the fact that $M_1$ and $M_2$ pass the same amount of current (with $M_1$ in saturation and $M_2$ in ohmic), and $M_1$ in parallel with $M_2$ act as a source-follower with $M_b$. Thus, we know that $V \approx \kappa(V_1 - V_b)$ since the current through both $M_2$ and $M_1$ is controlled by $V_1$.
 
         If $V_{out}$ were to go below $V$, and thus go below approximately $\kappa(V_1 - V_b)$, then $M_2$ would have current flowing into the $V_{out}$ node (reverse of the normal flow of current). Since $M_3$ and $M_4$ are current mirrors, and both in saturation, then there would also be current flowing into $V_{out}$ from $M_4$. Since there is no place for the current to go, $V_{out}$ would increase until $M_2$ is no longer passing current in the wrong direction.
 
@@ -43,6 +43,8 @@ When analyzing what happens to the circuit in the first experiment, we can break
         This is the simplest region to analyze, which is when $V_1 > V_2$ at steady state. In this case, almost all of the current in the circuit is going through the left branch of the differential amplifier. This is because since $V_1 > V_2$, there is a larger current flowing through $M_1$ which is mirrored due to the $p$MOS current mirror. Thus, there is an excess current at the drain node of $M_2$, raising the node capacitance until $M_4$ is no longer in saturation.
 
 \end{itemize}
+
+If $V_b$ is above threshold by a significant amount, then the entire graph is smoothed out compared to when $V_b$ is at threshold. This is because $M_b$ will be in strong-inversion, and the channel current will have a squared relationship with the voltage. The transitions regions will be the same, but the change from one region to another will be smoothed out.
 
 \end{document}
 
