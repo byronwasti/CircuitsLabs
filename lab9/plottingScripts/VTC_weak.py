@@ -30,12 +30,12 @@ def plot():
     plt.show()
 
 if __name__ == "__main__":
-    v_in1, v_out1 = getData("../data/VTC_V2=2.5V.csv")
-    #v_in2, v_out2 = getData("../data/VTC_V2=3.25V.csv")
-    #v_in3, v_out3 = getData("../data/VTC_V2=4V.csv")
+    v_in1, v_out1 = getData("../data/weak_VTC_V2=2.5V.csv")
+    v_in2, v_out2 = getData("../data/weak_VTC_V2=3.25V.csv")
+    v_in3, v_out3 = getData("../data/weak_VTC_V2=4V.csv")
 
     plotStuff( v_in1, v_out1, "$V_2 = 2.5V$" )
-    #plotStuff( v_in2, v_out2, "$V_2 = 3.25V$" )
-    #plotStuff( v_in3, v_out3, "$V_2 = 4V$" )
+    plotStuff( v_in2, v_out2, "$V_2 = 3.25V$" )
+    plotStuff( v_in3, v_out3, "$V_2 = 4V$" )
 
     plot()
