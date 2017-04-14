@@ -17,7 +17,7 @@ if TAKE_NEW_DATA:
     v_out = np.linspace(0, 5, 200)
     i_out = []
 
-    s.set_voltage(1, -0.0259)
+    s.set_voltage(1, -0.01)
     for n in  v_out:
         s.set_voltage(2, n)
 
@@ -54,8 +54,8 @@ if True:
     fig, ax1 = plt.subplots()
 
     ax1.plot(x, y1, '.', label="i_channel")
-    ax1.set_xlabel("Voltage In")
-    ax1.set_ylabel("Voltage Out")
+    ax1.set_xlabel("Voltage Out")
+    ax1.set_ylabel("Current Out")
 
     plt.show()
 

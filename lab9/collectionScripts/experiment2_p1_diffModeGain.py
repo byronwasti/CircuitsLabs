@@ -53,7 +53,7 @@ if True:
     fig, ax1 = plt.subplots()
 
     ax1.plot(x, y1, '.', label="i_channel")
-    ax1.set_xlabel("Voltage In")
+    ax1.set_xlabel("$V_{dm}$")
     ax1.set_ylabel("Voltage Out")
 
     plt.show()
