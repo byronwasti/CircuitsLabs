@@ -25,7 +25,7 @@ def plotStuff( x, y, label):
 def plot():
     plt.xlabel("$V_{in}$ (V)", fontsize=16)
     plt.ylabel("$V_{out}$ (V)", fontsize=16)
-    plt.title("VTC", fontsize=20)
+    plt.title("Moderate VTC", fontsize=20)
     plt.legend(fontsize=12, loc='best')
     plt.show()
 
