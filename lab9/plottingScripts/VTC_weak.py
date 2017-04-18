@@ -23,10 +23,10 @@ def plotStuff( x, y, label):
 
 
 def plot():
-    plt.xlabel("$V_{in}$")
-    plt.ylabel("$V_{out}$")
-    plt.title("Weak VTC")
-    plt.legend()
+    plt.xlabel("$V_{in}$ (V)", fontsize=16)
+    plt.ylabel("$V_{out}$ (V)", fontsize=16)
+    plt.title("VTC", fontsize=20)
+    plt.legend(fontsize=12, loc='best')
     plt.show()
 
 if __name__ == "__main__":
