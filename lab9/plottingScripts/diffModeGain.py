@@ -21,29 +21,30 @@ def getData(FILENAME):
 def plotStuff( x, y, label):
     plt.plot(x, y, '.',  label=label)
 
-def makeFit( x, y, label):
-    fit = np.polyfit( x, y, 1)
+def makeFit( x, y, start, end, label):
+    fit = np.polyfit( x[start:end], y[start:end], 1)
 
     fit_func = lambda x: fit[0]*x + fit[1]
 
     plt.plot(x, [ fit_func(i) for i in x ], '-', label=label)
+    plt.ylim(-0.1, 5.1)
 
     return fit
 
 def plot():
-    plt.xlabel("$V_{dm}$")
-    plt.ylabel("$V_{out}$")
-    plt.title("Differential-Mode Voltage Gain")
-    plt.legend()
+    plt.xlabel("$V_{dm}$ (V)", fontsize=16)
+    plt.ylabel("$V_{out}$ (V)", fontsize=16)
+    plt.title("Differential-Mode Voltage Gain", fontsize=20)
+    plt.legend(fontsize=12, loc='best')
     plt.show()
 
 if __name__ == "__main__":
     v_in, v_out = getData("../data/exp2_data1_diffModeGain.csv")
 
     plotStuff( v_in, v_out, "Experimental Data" )
-    start, end = (35, 63)
-    fit = makeFit( v_in[start:end], v_out[start:end], "Fit" )
+    start, end = (63, 98)
+    fit = makeFit( v_in, v_out, start, end, "Fit" )
 
-    plt.text(-0.02, 3.5, "Fit: ax + b\na=%e\nb=%e$V$" % (fit[0], fit[1]) )
+    plt.text(0.005, 3.5, "Fit: ax + b\na=%e\nb=%e$V$" % (fit[0], fit[1]) )
 
     plot()
