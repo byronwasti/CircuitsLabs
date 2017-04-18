@@ -41,9 +41,9 @@ if __name__ == "__main__":
     v_in, v_out = getData("../data/exp2_data2_CVC.csv")
 
     plotStuff( v_in, v_out, "Experimental Data" )
-    start, end = (70, 200)
+    start, end = (10, 180)
     fit = makeFit( v_in[start:end], v_out[start:end], "Fit" )
 
-    plt.text(2, -0.0005, "Fit: ax + b\na=%e$\mho$\nb=%e$A$\n\n$r_0$=1/a=%e$\Omega$" % (fit[0], fit[1], 1/fit[0]) )
+    plt.text(3, -0.00001, "Fit: ax + b\na=%e$\mho$\nb=%e$A$\n\n$r_0$=1/a=%e$\Omega$" % (fit[0], fit[1], 1/fit[0]) )
 
     plot()
