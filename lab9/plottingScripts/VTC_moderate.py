@@ -39,3 +39,4 @@ if __name__ == "__main__":
     plotStuff( v_in3, v_out3, "$V_2 = 4V$" )
 
     plot()
+

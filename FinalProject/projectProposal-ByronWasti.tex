@@ -1,0 +1,44 @@
+\documentclass{article}
+\usepackage[utf8]{inputenc}
+\usepackage{amstext}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{graphicx}
+\usepackage[margin=1in, paperwidth=8.5in, paperheight=11in]{geometry}
+\usepackage{gensymb}
+\usepackage{indentfirst}
+\usepackage{textcomp}
+\usepackage{upgreek }
+\usepackage{siunitx}
+\usepackage{enumitem}
+\usepackage{epstopdf}
+\epstopdfsetup{update} % only regenerate pdf files when eps file is newer
+
+\usepackage[american]{circuitikz}
+
+\title{Circuits Final Project Proposal}
+\author{Byron Wasti}
+\date{April 2017}
+
+\begin{document}
+\maketitle
+
+\section{Adaptive-Biasing Differential Amplifier}
+
+For the Final Project, I plan on designing and implementing (in LTSpice) an adaptive-biasing differential amplifier, using the Postlab 9 differential amplifier as a starting point. The general idea for my Final Project is to continue to improve on the differential amplifier that we have designed previously. I do not plan on implementing the circuit using a breadboard.
+
+For data collected, I plan on extracting the slew-rate from a large-amplitude step on the differential amplifier from Postlab 9, and comparing that to the slew-rate I extract from a large-amplitude step on the adaptive-biasing differential amplifier. I also plan on finding $A_{dm}$ for the adaptive-biasing differential amplifier.
+
+The references I will use are listed below.
+
+\begin{itemize}
+
+    \item  M.  G.  Degrauwe,  J.  Rijmenants, E. A. Vittoz, and H. J. de Man, “Adaptive Biasing CMOS Amplifiers,” IEEE Journal of Solid-State Circuits , vol. SC-17, no. 3, pp. 522–528, 1982)
+
+    \item  V. Thrivikramaru and Rajendra Kumar Baghel, "Adaptive biased operational amplifier with improved Slew-Rate," 2012 International Conference on Informatics, Electronics \& Vision (ICIEV), Dhaka, 2012, pp. 40-45.
+
+    \item  S. R. Ghosh and K. Khan, "A low power adaptive bias fully differential operational amplifier," 2014 IEEE International Conference on Advanced Communications, Control and Computing Technologies, Ramanathapuram, 2014, pp. 473-477.  (Note: this paper mostly talks about designing a low-power differential op-amp, but has a section on the adaptive-biasing portion)
+        
+\end{itemize}
+
+\end{document}
