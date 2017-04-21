@@ -42,4 +42,5 @@ if __name__ == "__main__":
     plt.xlabel("$V_{dm}$", fontsize=16)
     plt.ylabel("$I_{out}$ (A)", fontsize=16)
     plt.title("$I_{out}$ vs. $V_{dm}$", fontsize=20)
+    plt.legend(fontsize=12, loc='best')
     plt.show()
