@@ -1,0 +1,67 @@
+* Z:\home\byron\Documents\School\Circuits\Labs\FinalProject\ltspice_files\adaptive-biasing.asc
+XU1 I2mI1_1 V_b 0 nmos3
+XU2 A V_1 I2mI1_1 nmos3
+XU3 D V_2 I2mI1_1 nmos3
+XU4 V_bp V_b 0 nmos3
+XU5 B B 0 nmos3
+XU6 Vout B 0 nmos3
+XU7 I2mI1_2 V_bp P001 pmos3
+XU8 V_bp V_bp P002 pmos3
+XU9 P002 vdd
+XU10 P001 vdd
+XU11 Vout A_2 P003 pmos3
+XU12 A_2 A_2 P004 pmos3
+XU13 P003 vdd
+XU14 P004 vdd
+XU15 B V_1 I2mI1_2 pmos3
+XU16 C V_2 I2mI1_2 pmos3
+XU19 B D P005 pmos3
+XU20 D D P006 pmos3
+XU23 P006 vdd
+XU24 P005 vdd
+XU17 A_2 C 0 nmos3
+XU18 C C 0 nmos3
+Vb V_b 0 1.2
+V1 V_1 0 2.5
+Vdd P007 0 5
+XU21 P007 vdd
+XU22 nI1_1 nI1_1 0 nmos3
+XU25 nI2_1 nI2_1 0 nmos3
+XU26 nI2_1 nI1_1 0 nmos3
+XU27 I2mI1_1 nI2_1 0 nmos3
+XU28 nI2_2 nI2_2 0 nmos3
+XU29 nI1_2 nI1_2 0 nmos3
+XU30 nI1_2 nI2_2 0 nmos3
+XU31 I2mI1_1 nI1_2 0 nmos3
+XU33 nI1_1 D P008 pmos3
+XU34 P008 vdd
+XU36 nI1_2 D P009 pmos3
+XU38 P009 vdd
+XU40 N002 nI2_1 0 nmos3
+XU41 N003 nI1_2 0 nmos3
+XU42 N002 N002 P010 pmos3
+XU43 N003 N003 P011 pmos3
+XU44 I2mI1_2 N002 P012 pmos3
+XU45 I2mI1_2 N003 P013 pmos3
+XU46 P010 vdd
+XU47 P012 vdd
+XU48 P011 vdd
+XU49 P013 vdd
+XU50 A A P014 pmos3
+XU51 N001 A P015 pmos3
+XU52 nI2_1 A P016 pmos3
+XU53 N001 N001 0 nmos3
+XU54 A_2 N001 0 nmos3
+XU55 P014 vdd
+XU56 P015 vdd
+XU57 P016 vdd
+XU58 nI2_2 A P017 pmos3
+XU59 P017 vdd
+V2 V_2 0 2.5
+.include engr2420.sub
+.dc V1 0 5 0.01 V2 1 4 1
+* Current Mirror for Inverting Input Current
+* Output Stage
+* Current Mirror for Non-inverting Input Current
+.backanno
+.end

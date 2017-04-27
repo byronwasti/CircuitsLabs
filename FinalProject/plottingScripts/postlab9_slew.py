@@ -41,4 +41,8 @@ if __name__ == "__main__":
     plotStuff( time, v_in, "Input Step" )
     plotStuff( time, v_out, "Step Response" )
 
+    time, v_in, v_out = getData("../data/adaptive-biasing-3.txt")
+    plotStuff( time, v_in, "Input Step" )
+    plotStuff( time, v_out, "Step Response" )
+
     plot()
