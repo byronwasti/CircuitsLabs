@@ -24,7 +24,7 @@ def plotStuff( x, y, label):
 def plot():
     plt.xlabel("Time ($\mu$s)", fontsize=16)
     plt.ylabel("Voltage (V)", fontsize=16)
-    plt.title("Slew Rate Postlab9 Circuit", fontsize=20)
+    plt.title("Slew-Rate Comparison", fontsize=20)
     plt.legend(fontsize=12, loc='best')
     plt.show()
 
@@ -32,17 +32,12 @@ if __name__ == "__main__":
     time, v_in, v_out = getData("../data/postlab9.txt")
 
     plotStuff( time, v_in, "Input Step" )
-    plotStuff( time, v_out, "Step Response" )
+    plotStuff( time, v_out, "Postlab9 Step Response" )
+    plt.text(2, 2, "Postlab9 Circuit:\n  Rising Slew Rate: %e\n  Falling Slew Rate: %e" % (2545415.57010371, -2572342.230633689) )
 
-    plt.text(2, 2, "Rising Slew Rate: %e\nFalling Slew Rate: %e" % (2545415.57010371, -2572342.230633689) )
-
-
-    time, v_in, v_out = getData("../data/adaptive-biasing.txt")
+    time, v_in, v_out = getData("../data/adaptive-biasing-V3.txt")
     plotStuff( time, v_in, "Input Step" )
-    plotStuff( time, v_out, "Step Response" )
-
-    time, v_in, v_out = getData("../data/adaptive-biasing-3.txt")
-    plotStuff( time, v_in, "Input Step" )
-    plotStuff( time, v_out, "Step Response" )
+    plotStuff( time, v_out, "Adaptive-Biasing Step Response" )
+    plt.text(2, 1, "Adaptive-Biasing Circuit:\n  Rising Slew Rate: %e\n  Falling Slew Rate: %e" % (2545415.57010371, -2572342.230633689) )
 
     plot()
