@@ -23,7 +23,7 @@
 \begin{document}
 \maketitle
 
-\section{Introduction}
+\section{Background}
 
 \section{Subtraction Sub-Circuit}
 
@@ -41,9 +41,22 @@
     \label{fig:postlab9}
 \end{figure}
 
+\section{Voltage Transfer Characteristic}
+
+\section{Differential-Mode Gain}
+
+Method One:
+Single value of $V_2$, sweep $V_1$ around $V_2$ and then take slope of $V_{out}$. $V_{out}$ vs. $V_{dm}$
+
+Method Two:
+Two steps: Get Transconductance ($G_{m}$) and $R_{out}$. Then $A_{dm} = G_{m} R_{out}$.
+
+Find $R_{out}$: $V_{dm} = 0$, sweep $V_{out}$ and measure $I_{out}$. $\delta V_{out} / \delta I_{out} = R_{out}$.
+
+Find $G_{m}$: Hold $V_{out}$ and sweep $V_{dm}$ for small values. Find $I_{out}$. $\delta I_{out} / \delta V_{dm} = G_{m}$.
+
 
 \section{Slew Rate Comparison}
-
 
 \begin{figure}[ht!]
     \centering
