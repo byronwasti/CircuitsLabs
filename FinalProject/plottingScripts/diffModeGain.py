@@ -31,17 +31,17 @@ def makeFit( x, y, label):
     return fit
 
 def plot():
-    plt.xlabel("$V_{dm}$")
-    plt.ylabel("$V_{out}$")
-    plt.title("Differential-Mode Voltage Gain")
+    plt.xlabel("$V_{dm}$", fontsize=16)
+    plt.ylabel("$V_{out}$", fontsize=16)
+    plt.title("Differential-Mode Voltage Gain", fontsize=20)
     plt.axis([-0.25, 0.25, 0, 5])
-    plt.legend()
+    plt.legend(fontsize=20)
     plt.show()
 
 if __name__ == "__main__":
     v_in, v_out = getData("../data/adaptive-biasing-V3_DiffModeGain.txt")
 
-    plotStuff( v_in, v_out, "Experimental Data" )
+    plotStuff( v_in, v_out, "Simulated Data" )
     start, end = (len(v_in)//2 - 25, len(v_in)//2 + 10)
     fit = makeFit( v_in[start:end], v_out[start:end], "Fit" )
 

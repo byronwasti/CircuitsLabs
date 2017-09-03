@@ -12,7 +12,7 @@ def getData(FILENAME):
         for i, row in enumerate(reader):
             if i==0 : continue
             x.append(float(row[2]))
-            y.append(float(row[3]))
+            y.append(-float(row[3]))
 
     return np.array(x), np.array(y)
 
@@ -25,24 +25,24 @@ def makeFit( x, y, label):
 
     fit_func = lambda x: fit[0]*x + fit[1]
 
-    plt.plot(x, [ fit_func(i) for i in x ], '-', label=label)
+    plt.plot(x, [ fit_func(i)*1e6 for i in x ], '-', label=label)
 
     return fit
 
 def plot():
-    plt.xlabel("$V_{out}$")
-    plt.ylabel("$I_{out}$")
-    plt.title("Incremental Output Resistance")
-    plt.legend()
+    plt.xlabel("$V_{out}$ (V)", fontsize=16)
+    plt.ylabel("$I_{out}$ ($\mu$A)", fontsize=16)
+    plt.title("Incremental Output Resistance", fontsize=18)
+    plt.legend(fontsize=16)
     plt.show()
 
 if __name__ == "__main__":
     v_out, i_out = getData("../data/adaptive-biasing-V3_Rout.txt")
 
-    plotStuff( v_out, i_out, "Experimental Data" )
-    #start, end = (70, 200)
-    #fit = makeFit( v_out[start:end], i_out[start:end], "Fit" )
+    plotStuff( v_out, i_out*1e6, "Experimental Data" )
+    start, end = (50, 400)
+    fit = makeFit( v_out[start:end], i_out[start:end], "Fit" )
 
-    #plt.text(2, -0.0005, "Fit: ax + b\na=%e$\mho$\nb=%e$A$\n\n$r_0$=1/a=%e$\Omega$" % (fit[0], fit[1], 1/fit[0]) )
+    plt.text(2, 5, "Fit: ax + b\na=%e$\mho$\nb=%e$A$\n\n$r_0$=1/a=%e$\Omega$" % (fit[0], fit[1], 1/fit[0]) )
 
     plot()

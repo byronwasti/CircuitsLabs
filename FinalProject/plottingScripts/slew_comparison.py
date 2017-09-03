@@ -12,7 +12,7 @@ def getData(FILENAME):
         reader = csv.reader(f, delimiter='\t')
         for i, row in enumerate(reader):
             if i==0 : continue
-            x.append(float(row[0]) * 1e6)
+            x.append(float(row[0])*1e6)
             y1.append(float(row[1]))
             y2.append(float(row[2]))
 
@@ -38,6 +38,6 @@ if __name__ == "__main__":
     time, v_in, v_out = getData("../data/adaptive-biasing-V3.txt")
     plotStuff( time, v_in, "Input Step" )
     plotStuff( time, v_out, "Adaptive-Biasing Step Response" )
-    plt.text(2, 1, "Adaptive-Biasing Circuit:\n  Rising Slew Rate: %e\n  Falling Slew Rate: %e" % (2545415.57010371, -2572342.230633689) )
+    plt.text(2, 1, "Adaptive-Biasing Circuit:\n  Rising Slew Rate: %e\n  Falling Slew Rate: %e" % (10117237, -13731174) )
 
     plot()
